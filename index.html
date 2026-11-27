@@ -27,41 +27,39 @@
 
 <main>
   <section class="choice-hero" id="home">
-    <div class="choice-intro">
+    <div class="choice-heading">
       <div class="eyebrow"><span class="eyebrow-dot"></span> KELSEY MEDIA · PRODUCTION</div>
-      <h1>Artwork<br><span>specifications.</span></h1>
-      <p>Everything you need to prepare advertising artwork for Kelsey Media publications and digital platforms.</p>
-      <div class="choose-label"><span></span> SELECT A SPECIFICATION TYPE <span></span></div>
+      <h1>Artwork specifications</h1>
+      <p>Select the type of advertising artwork you need.</p>
     </div>
     <div class="choice-panels">
-      <a class="choice-panel print-panel" href="#print" data-jump="print">
-        <div class="panel-top"><span class="panel-index">01</span><span class="panel-type">PRINT ADVERTISING</span></div>
-        <div class="panel-graphic print-graphic" aria-hidden="true">
-          <div class="paper paper-back"></div><div class="paper paper-front"><span></span><i></i><b></b></div>
-          <div class="graphic-measure measure-width">210 mm</div><div class="graphic-measure measure-height">297 mm</div>
-        </div>
-        <div class="panel-bottom"><div><h2>Print</h2><p>Publication sizes, advert formats and print requirements.</p></div><span class="panel-arrow">↗</span></div>
-        <div class="panel-cta">EXPLORE PRINT SPECIFICATIONS <span>→</span></div>
-      </a>
-      <a class="choice-panel digital-panel" href="#digital" data-jump="digital">
-        <div class="panel-top"><span class="panel-index">02</span><span class="panel-type">DIGITAL ADVERTISING</span></div>
-        <div class="panel-graphic digital-graphic" aria-hidden="true">
-          <div class="screen screen-wide"><span></span><i></i></div>
-          <div class="screen screen-small"><b></b><i></i></div>
-          <div class="screen screen-phone"><span></span><i></i></div>
-          <div class="digital-orbit"></div>
-        </div>
-        <div class="panel-bottom"><div><h2>Digital</h2><p>Web, email, branded content and social media formats.</p></div><span class="panel-arrow">↗</span></div>
-        <div class="panel-cta">EXPLORE DIGITAL SPECIFICATIONS <span>→</span></div>
-      </a>
+      <button class="choice-panel print-panel" type="button" data-open-view="print">
+        <span class="panel-index">01 / PRINT</span>
+        <span class="panel-illustration print-illustration" aria-hidden="true">
+          <span class="print-sheet"><i></i><b></b><em></em></span>
+          <span class="measure measure-w">210 mm</span><span class="measure measure-h">297 mm</span>
+        </span>
+        <span class="panel-bottom"><span><strong>PRINT SPECS</strong><small>Publication sizes, advert formats and print requirements.</small></span><span class="panel-arrow">↗</span></span>
+        <span class="panel-cta">VIEW PRINT SPECIFICATIONS <span>→</span></span>
+      </button>
+      <button class="choice-panel digital-panel" type="button" data-open-view="digital">
+        <span class="panel-index">02 / DIGITAL</span>
+        <span class="panel-illustration digital-illustration" aria-hidden="true">
+          <span class="device device-desktop"><i></i><b></b></span>
+          <span class="device device-mobile"><i></i></span>
+          <span class="device device-card"><i></i><b></b></span>
+        </span>
+        <span class="panel-bottom"><span><strong>DIGITAL SPECS</strong><small>Web, email, branded content and social media formats.</small></span><span class="panel-arrow">↗</span></span>
+        <span class="panel-cta">VIEW DIGITAL SPECIFICATIONS <span>→</span></span>
+      </button>
     </div>
-    <div class="home-foot"><span>KESELY MEDIA · ARTWORK SPECIFICATIONS</span><span>2026 EDITION</span></div>
+    <div class="home-foot"><span>KELSEY MEDIA · ARTWORK SPECIFICATIONS</span><span>2026 EDITION</span></div>
   </section>
 
   <section class="content-section" id="print">
     <div class="section-heading">
       <div><div class="eyebrow">01 / PRINT</div><h2>Print specifications</h2><p>Find the correct advert dimensions for your publication.</p></div>
-      <a class="back-home" href="#home">← Back to selection</a>
+      <button class="back-home" type="button" data-open-view="home">← Back to selection</button>
     </div>
     <div class="search-panel">
       <label class="search-box"><span>⌕</span><input id="publicationSearch" type="search" placeholder="Search publication..." autocomplete="off"><kbd>⌘ K</kbd></label>
@@ -80,7 +78,7 @@
     <div class="content-section">
       <div class="section-heading">
         <div><div class="eyebrow">02 / DIGITAL</div><h2>Digital specifications</h2><p>Creative requirements for web, email, branded content and social placements.</p></div>
-        <a class="back-home" href="#home">← Back to selection</a>
+        <button class="back-home" type="button" data-open-view="home">← Back to selection</button>
       </div>
       <div class="digital-toolbar">
         <div class="digital-tabs" id="digitalTabs"></div>

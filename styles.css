@@ -50,3 +50,70 @@
 .home-foot{display:flex;justify-content:space-between;max-width:1320px;width:100%;margin:16px auto 0;font-size:8px;letter-spacing:1.3px;color:#8a958c}
 .back-home{font-size:11px;font-weight:700;color:#5e8c67;border-bottom:1px solid #a5d8b0;padding-bottom:5px;white-space:nowrap}
 @media(max-width:700px){.choice-hero{min-height:auto;padding:28px 16px 14px}.choice-intro{padding:10px 0 20px}.choice-intro h1{font-size:43px}.choice-intro p{font-size:12px}.choice-panels{grid-template-columns:1fr;gap:12px}.choice-panel{min-height:330px;padding:20px}.panel-graphic{inset:42px 0 58px}.panel-bottom h2{font-size:33px}.home-foot{font-size:7px}.section-heading{align-items:flex-start}.back-home{margin-top:5px}}
+
+/* Full-screen two-way entry point and view switching */
+body.show-home .choice-hero{display:flex}
+body.show-home main>.content-section# print,
+body.show-home main>.digital-section{display:none}
+body.show-print .choice-hero,
+body.show-print main>.digital-section{display:none}
+body.show-print main>.content-section# print{display:block}
+body.show-digital .choice-hero,
+body.show-digital main>.content-section# print{display:none}
+body.show-digital main>.digital-section{display:block}
+.choice-hero{min-height:calc(100vh - 82px);height:calc(100vh - 82px);padding:26px clamp(18px,5vw,76px) 14px;display:flex;flex-direction:column;background:#f8faf8}
+.choice-heading{text-align:center;padding:0 0 22px;flex:none}
+.choice-heading h1{font:800 clamp(28px,3.2vw,42px)/1.1 Manrope,sans-serif;letter-spacing:-1.8px;color:#17251b;margin:11px 0 6px}
+.choice-heading p{font-size:13px;color:#6c786f;margin:0}
+.choice-panels{display:grid;grid-template-columns:1fr 1fr;gap:0;flex:1;min-height:0;width:100%;max-width:1450px;margin:0 auto;overflow:hidden}
+.choice-panel{border:0;border-radius:0;text-align:left;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:27px clamp(22px,4vw,58px) 24px;cursor:pointer;transition:filter .2s, padding .2s;min-height:0}
+.choice-panel:hover{filter:brightness(1.035);padding-left:clamp(27px,4.4vw,64px);padding-right:clamp(27px,4.4vw,64px);box-shadow:none;transform:none}
+.print-panel{background:#a5d8b0;color:#17251b}
+.digital-panel{background:#1b2b21;color:#fff}
+.panel-index{font:700 10px Manrope;letter-spacing:1.8px;opacity:.75;position:relative;z-index:2}
+.panel-illustration{position:absolute;left:0;right:0;top:12%;bottom:17%;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.print-sheet{width:clamp(130px,16vw,205px);height:clamp(175px,23vw,290px);background:#f9fff9;box-shadow:20px 18px 0 #527d5b36,0 20px 55px #355d3d25;transform:rotate(-5deg);padding:clamp(15px,2vw,25px);display:block;position:relative}
+.print-sheet:before{content:"KELSEY MEDIA";font:800 9px Manrope;letter-spacing:1px;color:#52765a;display:block;margin-bottom:13px}
+.print-sheet i{display:block;height:35%;background:#a5d8b0;margin-bottom:12px}
+.print-sheet b{display:block;height:5px;background:#d3dfd5;box-shadow:0 11px #d3dfd5,0 22px #d3dfd5}
+.print-sheet em{display:block;height:23%;background:#eaf1eb;margin-top:35px}
+.measure{position:absolute;font:700 9px Manrope;color:#426b4b;letter-spacing:.5px}
+.measure-w{border-top:1px solid #527d5b;padding-top:8px;width:clamp(155px,19vw,235px);text-align:center;transform:translateY(clamp(105px,14vw,170px))}
+.measure-h{border-top:1px solid #527d5b;padding-top:8px;transform:translateX(clamp(105px,13vw,160px)) rotate(90deg)}
+.digital-illustration{gap:0}
+.device{position:absolute;background:#263b2c;border:1px solid #a5d8b0;box-shadow:0 18px 40px #0003;padding:12px}
+.device-desktop{width:clamp(175px,22vw,270px);height:clamp(110px,14vw,170px);transform:translate(-20px,-10px)}
+.device-desktop:after{content:"";position:absolute;bottom:-13px;left:18%;right:18%;height:12px;background:#a5d8b0}
+.device-desktop i{display:block;height:16px;background:#a5d8b0;margin-bottom:10px}
+.device-desktop b{display:block;width:58%;height:65%;background:#ffffff20;box-shadow:100px 0 #ffffff12}
+.device-mobile{width:clamp(45px,5vw,62px);height:clamp(90px,12vw,140px);border-radius:8px;transform:translate(-140px,70px);background:#111e15;padding:8px}
+.device-mobile i{display:block;height:100%;background:#ffffff1c}
+.device-card{width:clamp(95px,12vw,145px);height:clamp(85px,10vw,120px);transform:translate(115px,75px);background:#a5d8b0;padding:10px}
+.device-card i{display:block;height:22px;background:#1b2b21;margin-bottom:8px}
+.device-card b{display:block;height:55%;background:#ffffff80}
+.panel-bottom{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;margin-top:auto}
+.panel-bottom strong{display:block;font:800 clamp(26px,3.2vw,42px)/1 Manrope;letter-spacing:-1.5px}
+.panel-bottom small{display:block;font:400 12px/1.5 "DM Sans";opacity:.78;max-width:320px;margin-top:9px}
+.panel-arrow{font-size:30px;line-height:1}
+.panel-cta{position:relative;z-index:2;border-top:1px solid #ffffff80;padding-top:15px;margin-top:20px;font-size:9px;letter-spacing:1.4px;font-weight:700;display:flex;justify-content:space-between}
+.digital-panel .panel-cta{border-color:#ffffff45}
+.back-home{border:0;border-bottom:1px solid #a5d8b0;background:none;padding:0 0 5px;font:700 11px "DM Sans";cursor:pointer}
+.home-foot{display:flex;justify-content:space-between;max-width:1450px;width:100%;margin:12px auto 0;font-size:8px;letter-spacing:1.3px;color:#8a958c;flex:none}
+@media(max-width:700px){
+ .choice-hero{height:auto;min-height:calc(100vh - 70px);padding:25px 14px 12px}
+ .choice-heading{padding-bottom:18px}
+ .choice-heading h1{font-size:30px}
+ .choice-panels{grid-template-columns:1fr;grid-template-rows:1fr 1fr}
+ .choice-panel{padding:18px 20px 16px;min-height:270px}
+ .panel-illustration{top:5%;bottom:15%;left:20%}
+ .print-sheet{width:105px;height:145px}
+ .measure-w{transform:translateY(90px)}
+ .measure-h{transform:translateX(75px) rotate(90deg)}
+ .device-desktop{width:155px;height:95px}
+ .device-mobile{transform:translate(-95px,50px);width:42px;height:80px}
+ .device-card{transform:translate(85px,55px);width:85px;height:70px}
+ .panel-bottom strong{font-size:25px}
+ .panel-bottom small{font-size:10px;max-width:230px}
+ .panel-cta{font-size:8px;margin-top:12px;padding-top:10px}
+ .home-foot{font-size:7px}
+}

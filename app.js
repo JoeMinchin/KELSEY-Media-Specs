@@ -21,8 +21,18 @@ function init(){
   $("digitalSearch").addEventListener("input",renderDigital);
   document.querySelectorAll("[data-view]").forEach(a=>a.addEventListener("click",()=>setActiveNav(a.dataset.view)));
   document.querySelectorAll("[data-jump]").forEach(a=>a.addEventListener("click",()=>setActiveNav(a.dataset.jump)));
+  document.querySelectorAll("[data-open-view]").forEach(el=>el.addEventListener("click",()=>openView(el.dataset.openView)));
+  openView("home");
+
   document.querySelector(".mobile-menu").addEventListener("click",()=>document.querySelector(".top-nav").classList.toggle("open"));
   document.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();$("publicationSearch").focus();}});
+}
+function openView(view){
+  document.body.classList.toggle("show-print",view==="print");
+  document.body.classList.toggle("show-digital",view==="digital");
+  document.body.classList.toggle("show-home",view==="home");
+  setActiveNav(view);
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 function setActiveNav(view){
   document.querySelectorAll(".nav-link").forEach(a=>a.classList.toggle("active",a.dataset.view===view));
