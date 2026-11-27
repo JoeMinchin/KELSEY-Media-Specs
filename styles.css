@@ -193,3 +193,29 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
  .landing-desktop{left:0;top:9px;width:205px;height:132px}
  .landing-mobile{right:0;bottom:0;width:61px;height:118px}
 }
+
+/* Print diagram: bleed canvas, trim boundary, crop marks and accurately sized advert */
+.clean-preview-wrap{min-height:220px;padding:18px 12px 12px;justify-content:flex-start}
+.bleed-canvas{width:116px;max-width:100%;height:auto;position:relative;flex:none;background:#fff;border:1px solid #a5d8b0;overflow:visible}
+.bleed-canvas.spread{width:232px}
+.trim-page{position:absolute;border:1px solid #1d2a20;background:transparent;box-sizing:border-box}
+.clean-ad-block,.bleed-ad-block{position:absolute;background:#91cda8}
+.bleed-ad-block{inset:0}
+.clean-safe-area{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:1px dashed #26372b;box-sizing:border-box;pointer-events:none}
+.crop-marks{position:absolute;inset:0;pointer-events:none;background:
+ linear-gradient(#17251b,#17251b) left top/8px 1px no-repeat,
+ linear-gradient(#17251b,#17251b) left top/1px 8px no-repeat,
+ linear-gradient(#17251b,#17251b) right top/8px 1px no-repeat,
+ linear-gradient(#17251b,#17251b) right top/1px 8px no-repeat,
+ linear-gradient(#17251b,#17251b) left bottom/8px 1px no-repeat,
+ linear-gradient(#17251b,#17251b) left bottom/1px 8px no-repeat,
+ linear-gradient(#17251b,#17251b) right bottom/8px 1px no-repeat,
+ linear-gradient(#17251b,#17251b) right bottom/1px 8px no-repeat}
+.spread-seam{position:absolute;top:0;bottom:0;left:50%;border-left:1px dashed #26372b}
+.clean-format-card .format-details{display:grid;gap:4px}
+@media(max-width:650px){.clean-preview-wrap{min-height:190px}.bleed-canvas{width:100px}.bleed-canvas.spread{width:200px}}
+/* Homepage device icons grouped closely together */
+.digital-art.landing-devices{width:270px;height:205px}
+.landing-desktop{left:0;top:18px;width:220px;height:140px}
+.landing-mobile{right:2px;bottom:5px;width:66px;height:126px}
+@media(max-width:650px){.digital-art.landing-devices{width:235px;height:165px;top:43%;transform:translate(-50%,-50%) scale(.78)}.landing-desktop{left:0;top:10px;width:195px;height:124px}.landing-mobile{right:0;bottom:0;width:59px;height:114px}}
