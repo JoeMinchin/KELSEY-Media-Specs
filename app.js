@@ -8,16 +8,13 @@ fetch("data.json").then(r => r.json()).then(data => { DATA=data; init(); }).catc
 function init(){
   $("publicationCount").textContent = DATA.publications.length;
   const trims = [...new Set(DATA.publications.map(p=>p.trim))].sort();
-  const printers = [...new Set(DATA.publications.map(p=>p.printer))].sort();
   trims.forEach(v => $("trimFilter").add(new Option(v+" mm",v)));
-  printers.forEach(v => $("printerFilter").add(new Option(v,v)));
   $("skinNote").textContent = "The source spreadsheet lists page skins as valid only for: " + DATA.pageSkinTitles.join(", ") + ". Check the title and booking before accepting page-skin artwork.";
   renderPublications();
   renderDigitalTabs();
   renderDigital();
   $("publicationSearch").addEventListener("input",renderPublications);
   $("trimFilter").addEventListener("change",renderPublications);
-  $("printerFilter").addEventListener("change",renderPublications);
   $("digitalSearch").addEventListener("input",renderDigital);
   document.querySelectorAll("[data-view]").forEach(a=>a.addEventListener("click",()=>setActiveNav(a.dataset.view)));
   document.querySelectorAll("[data-jump]").forEach(a=>a.addEventListener("click",()=>setActiveNav(a.dataset.jump)));
@@ -39,15 +36,15 @@ function setActiveNav(view){
   document.querySelector(".top-nav").classList.remove("open");
 }
 function renderPublications(){
-  const q=$("publicationSearch").value.trim().toLowerCase(), trim=$("trimFilter").value, printer=$("printerFilter").value;
-  const list=DATA.publications.filter(p=>p.name.toLowerCase().includes(q)&&(!trim||p.trim===trim)&&(!printer||p.printer===printer));
-  $("publicationList").innerHTML=list.length?list.map(p=>`<button class="publication-item ${selectedPublication===p.name?"selected":""}" data-name="${escapeAttr(p.name)}"><span><span class="pub-name">${escapeHtml(p.name)}</span><span class="pub-meta">${escapeHtml(p.trim)} mm · ${escapeHtml(p.printer)}</span></span><span class="pub-arrow">→</span></button>`).join(""):'<div class="no-results">No publications match your search.</div>';
+  const q=$("publicationSearch").value.trim().toLowerCase(), trim=$("trimFilter").value;
+  const list=DATA.publications.filter(p=>p.name.toLowerCase().includes(q)&&(!trim||p.trim===trim));
+  $("publicationList").innerHTML=list.length?list.map(p=>`<button class="publication-item ${selectedPublication===p.name?"selected":""}" data-name="${escapeAttr(p.name)}"><span><span class="pub-name">${escapeHtml(p.name)}</span><span class="pub-meta">${escapeHtml(p.trim)} mm trim</span></span><span class="pub-arrow">→</span></button>`).join(""):'<div class="no-results">No publications match your search.</div>';
   $("publicationList").querySelectorAll("[data-name]").forEach(b=>b.addEventListener("click",()=>selectPublication(b.dataset.name)));
 }
 function selectPublication(name){
   selectedPublication=name; const p=DATA.publications.find(x=>x.name===name); renderPublications();
   const specs=DATA.printSpecs[p.trim];
-  let content=`<div class="detail-top"><div><div class="eyebrow">PUBLICATION / PRINT</div><h3>${escapeHtml(p.name)}</h3><p>Printer: ${escapeHtml(p.printer)}</p></div><div class="trim-badge">${escapeHtml(p.trim)} mm</div></div>`;
+  let content=`<div class="detail-top"><div><div class="eyebrow">PUBLICATION / PRINT</div><h3>${escapeHtml(p.name)}</h3><p>Print advert dimensions and formats</p></div><div class="trim-badge">${escapeHtml(p.trim)} mm</div></div>`;
   if(specs){
     content+=`<div class="detail-label">AVAILABLE ADVERT FORMATS · DIMENSIONS IN MM</div><div class="format-grid">`;
     Object.entries(specs).forEach(([name,values])=>{

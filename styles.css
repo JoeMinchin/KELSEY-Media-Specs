@@ -117,3 +117,13 @@ body.show-digital main>.digital-section{display:block}
  .panel-cta{font-size:8px;margin-top:12px;padding-top:10px}
  .home-foot{font-size:7px}
 }
+
+/* Clear interactive feedback on the two homepage choices */
+.choice-panel{cursor:pointer;outline:none}
+.choice-panel:focus-visible{outline:4px solid #fff;outline-offset:-9px;z-index:3}
+.print-panel:hover,.print-panel:focus-visible{background:#8fc99b}
+.digital-panel:hover,.digital-panel:focus-visible{background:#294333}
+.choice-panel:hover .panel-arrow,.choice-panel:focus-visible .panel-arrow{transform:translate(5px,-5px);color:#fff}
+.choice-panel .panel-arrow{transition:transform .2s ease,color .2s ease}
+.choice-panel:hover .panel-cta,.choice-panel:focus-visible .panel-cta{letter-spacing:1.8px}
+.panel-cta{transition:letter-spacing .2s ease}
