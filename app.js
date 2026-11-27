@@ -43,9 +43,13 @@ function renderDigital(){
  bindAccordions($("digitalList"));
 }
 function digitalPreview(item){
- const m=item.spec.match(/Dimensions?\s*:\s*(\d+)\s*px?\s*[Ww×x]\s*(\d+)\s*px?/i)||item.spec.match(/(\d+)\s*[×x]\s*(\d+)\s*px/i);
+ const m=item.spec.match(/Dimensions?\\s*:\\s*(\\d+)\\s*px?\\s*[Ww×x]\\s*(\\d+)\\s*px?/i)||item.spec.match(/(\\d+)\\s*[×x]\\s*(\\d+)\\s*px/i);
  if(!m)return '<div class="digital-preview-placeholder"><span>CREATIVE PREVIEW</span></div>';
  const w=+m[1],h=+m[2],ratio=w/h;
+ const isMobile=/mobile/i.test(item.name);
+ if(isMobile){
+  return `<div class="digital-preview-area phone-stage"><div class="phone-frame"><div class="phone-screen"><div class="phone-banner" style="aspect-ratio:${w}/${h}"><span class="phone-placeholder">${esc(item.name)}</span></div></div></div><span class="preview-caption">MOBILE SCREEN PREVIEW · ${w} × ${h} PX BANNER</span></div>`;
+ }
  const boxW=Math.min(250,Math.max(64,Math.sqrt(ratio)*75)),boxH=boxW/ratio;
  return `<div class="digital-preview-area"><div class="digital-preview" style="width:${boxW}px;height:${boxH}px"><span>${esc(item.name)}</span><i>ADVERT</i></div><span class="preview-caption">SCREEN PROPORTION PREVIEW · ${w} × ${h} PX</span></div>`;
 }
