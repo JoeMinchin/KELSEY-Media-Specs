@@ -259,3 +259,65 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
  .print-dimensions{grid-template-columns:1fr}
  .accordion-content{padding-left:16px;padding-right:16px}
 }
+
+/* Kelsey Media branded print specification layout */
+.spec-page{max-width:1120px;padding-top:48px}
+.page-intro{padding:0 0 24px;border-bottom:1px solid #d9eadc;position:relative}
+.page-intro:after{content:"";position:absolute;left:0;bottom:-1px;width:74px;height:3px;background:#a5d8b0}
+.page-intro h1{color:#203d29}
+.page-intro .eyebrow{color:#53875d}
+.search{border:1px solid #cfe4d2;background:#f5faf6;border-radius:8px;box-shadow:0 3px 12px #1d4b2910}
+.search:focus-within{border-color:#8fc99b;box-shadow:0 0 0 3px #a5d8b033}
+.accordion-list{border-top:1px solid #d9eadc}
+.accordion-item{border-bottom:1px solid #d9eadc}
+.accordion-trigger{transition:background .16s ease}
+.accordion-trigger:hover,.accordion-trigger[aria-expanded=true]{background:#edf7ef}
+.plus{color:#4f9460}
+.accordion-content{background:#f7fbf7;padding:20px 24px 28px 55px}
+.item-meta{color:#5f8066}
+.ks-print-spec{background:#fff;border:1px solid #e0ece2;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px #183b2010}
+.ks-print-visual{padding:26px 28px 18px;background:linear-gradient(135deg,#f6fbf7,#edf7ef);border-bottom:1px solid #e1eee3}
+.ks-diagram-heading{display:flex;justify-content:space-between;align-items:center;margin:0 auto 14px;max-width:720px;color:#55765b;font-size:10px;font-weight:800;letter-spacing:1.4px}
+.ks-diagram-heading strong{color:#284b31;font-size:11px;letter-spacing:0}
+.ks-bleed-frame{position:relative;width:min(100%,460px);margin:0 auto;background:#e1f2e5;border:2px dashed #68a978;padding:0}
+.ks-trim-frame{position:absolute;background:#fff;border:1.5px solid #284b31;overflow:hidden}
+.ks-diagram-zone{position:absolute;box-sizing:border-box;background:#a5d8b0d9;border:1px solid #5c9b69;display:flex;align-items:flex-start;justify-content:flex-start;padding:5px;overflow:hidden}
+.ks-diagram-zone span{font:600 clamp(7px,.8vw,10px)/1.2 "DM Sans",sans-serif;color:#24472d}
+.ks-diagram-zone.zone-1{background:#d4ebd8d9}
+.ks-diagram-zone.zone-2{background:#b8dfc0d9}
+.ks-diagram-zone.zone-3{background:#e0f0e2d9}
+.ks-diagram-zone.zone-4{background:#c5e5cbdd}
+.ks-full-page-fill{position:absolute;inset:0;background:#a5d8b0;display:grid;place-items:center;color:#315c39;font:700 13px Manrope}
+.ks-diagram-safe{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:1.5px dashed #365f40;pointer-events:none}
+.ks-crop{position:absolute;width:10px;height:10px;border-color:#25432d}
+.ks-crop.tl{left:-6px;top:-6px;border-left:1px solid;border-top:1px solid}
+.ks-crop.tr{right:-6px;top:-6px;border-right:1px solid;border-top:1px solid}
+.ks-crop.bl{left:-6px;bottom:-6px;border-left:1px solid;border-bottom:1px solid}
+.ks-crop.br{right:-6px;bottom:-6px;border-right:1px solid;border-bottom:1px solid}
+.ks-legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:16px;color:#59715e;font-size:10px}
+.ks-legend span{display:flex;align-items:center;gap:6px}
+.ks-legend i{display:inline-block;width:13px;height:9px}
+.bleed-key{border:1px dashed #68a978;background:#e1f2e5}
+.trim-key{border:1px solid #284b31;background:#fff}
+.zone-key{background:#a5d8b0;border:1px solid #5c9b69}
+.safe-key{border:1px dashed #365f40}
+.ks-table-wrap{overflow-x:auto}
+.ks-dim-table{width:100%;border-collapse:collapse;text-align:left;font-size:12px}
+.ks-dim-table thead{background:#eaf5ec;color:#315b39}
+.ks-dim-table th,.ks-dim-table td{padding:13px 15px;border-bottom:1px solid #e5eee6;white-space:nowrap}
+.ks-dim-table thead th{font:800 10px Manrope;letter-spacing:.8px;text-transform:uppercase}
+.ks-dim-table tbody th{font-weight:700;color:#294a31}
+.ks-dim-table tbody td{color:#536b57;font-variant-numeric:tabular-nums}
+.ks-dim-table tbody tr:nth-child(even){background:#f8fbf8}
+.ks-dim-table tbody tr:hover{background:#eff8f0}
+.ks-print-notes{padding:17px 20px;background:#f4faf5;border-top:1px solid #e1eee3}
+.ks-print-notes strong{font:700 12px Manrope;color:#315b39}
+.ks-print-notes p{font-size:11px;line-height:1.65;color:#637568;margin:5px 0 0}
+@media(max-width:720px){
+ .accordion-content{padding:14px 10px 18px}
+ .ks-print-visual{padding:18px 14px 14px}
+ .ks-bleed-frame{width:min(100%,330px)}
+ .ks-dim-table{font-size:11px}
+ .ks-dim-table th,.ks-dim-table td{padding:10px 9px}
+ .ks-legend{gap:10px;font-size:9px}
+}
