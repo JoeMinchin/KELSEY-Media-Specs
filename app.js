@@ -43,7 +43,7 @@ function renderDigital(){
  bindAccordions($("digitalList"));
 }
 function digitalPreview(item){
- const m=item.spec.match(/Dimensions?\\s*:\\s*(\\d+)\\s*px?\\s*[Ww×x]\\s*(\\d+)\\s*px?/i)||item.spec.match(/(\\d+)\\s*[×x]\\s*(\\d+)\\s*px/i);
+ const m=item.spec.match(/Dimensions?\s*:\s*(\d+)\s*px?\s*[Ww×x]\s*(\d+)\s*px?/i)||item.spec.match(/(\d+)\s*[×x]\s*(\d+)\s*px/i);
  if(!m)return '<div class="digital-preview-placeholder"><span>CREATIVE PREVIEW</span></div>';
  const w=+m[1],h=+m[2],ratio=w/h;
  const isMobile=/mobile/i.test(item.name);
