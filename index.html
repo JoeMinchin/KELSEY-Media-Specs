@@ -6,7 +6,7 @@
 <title>Kelsey Media | Artwork Specifications</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=18">
+<link rel="stylesheet" href="./styles.css?v=19">
 </head>
 <body>
 <header class="header">
@@ -77,53 +77,78 @@
   const t=e.target.closest(".accordion-trigger");
   if(t){const open=t.getAttribute("aria-expanded")==="true";t.setAttribute("aria-expanded",String(!open));const panel=$(t.getAttribute("aria-controls"));if(panel)panel.hidden=open;}
  });
+ document.addEventListener("click",e=>{
+  const choice=e.target.closest(".ks-format-option,.ks-zone");
+  if(choice){selectPrintFormat(choice.closest(".ks-print-spec"),choice.dataset.format)}
+ });
+ document.addEventListener("pointerover",e=>{
+  const choice=e.target.closest(".ks-format-option,.ks-zone");
+  if(choice)selectPrintFormat(choice.closest(".ks-print-spec"),choice.dataset.format);
+ });
+ function selectPrintFormat(root,code){
+  if(!root||!code)return;
+  root.querySelectorAll("[data-format]").forEach(el=>el.classList.toggle("is-active",el.dataset.format===code));
+  const detail=root.querySelector(".ks-format-detail");
+  if(!detail)return;
+  const rows={};
+  root.querySelectorAll(".ks-format-option").forEach(btn=>{
+   const row=btn;
+   if(btn.dataset.format===code){rows.name=btn.querySelector("span")?.textContent||code;}
+  });
+  const dataTable=[...root.querySelectorAll(".ks-dim-table tbody tr")].find(tr=>tr.querySelector("th")?.textContent.startsWith(code+" ·")||tr.querySelector("th")?.textContent.startsWith(code+" "));
+  const dim=dataTable?.querySelector("td")?.textContent||"See source specification";
+  const label=code==="DPS"?"DOUBLE-PAGE SPREAD":"ADVERT FORMAT";
+  detail.innerHTML='<span class="ks-detail-label">'+label+'</span><strong>'+esc(rows.name||code)+' · '+esc(dim)+'</strong><p>'+(code==="DPS"?"The supplied source does not state separate bleed dimensions for this format. Confirm with Production.":"Dimensions are taken directly from the supplied Kelsey Media print specification.")+'</p>';
+ }
  function printCards(specs,trim){
   const mm=value=>{
-   const m=String(value||"").match(/([\\d.]+)\\s*[×x]\\s*([\\d.]+)/i);
+   const m=String(value||"").match(/([\d.]+)\s*[×x]\s*([\d.]+)/i);
    return m?{w:Number(m[1]),h:Number(m[2])}:null;
   };
-  const trimMatch=String(trim).match(/([\\d.]+)\\s*x\\s*([\\d.]+)/i);
-  const page={w:trimMatch?+trimMatch[1]:200,h:trimMatch?+trimMatch[2]:270};
+  const tm=String(trim).match(/([\d.]+)\s*x\s*([\d.]+)/i);
+  const page={w:tm?+tm[1]:200,h:tm?+tm[2]:270};
   const entries=Object.entries(specs).map(([name,vals])=>{
    const get=key=>vals.find(v=>v[0].toLowerCase()===key.toLowerCase())?.[1]||"";
    return {name,vals,get,size:mm(get("Size")),trim:mm(get("Trim")),bleed:mm(get("Bleed")),type:mm(get("Type")||get("Type area"))};
   });
-  const full=entries.find(x=>/full page/i.test(x.name));
-  const spread=entries.find(x=>/double page|spread/i.test(x.name));
-  const outer=full?.bleed||page;
-  const trimInsetX=full?.bleed?((outer.w-page.w)/2/outer.w*100):0;
-  const trimInsetY=full?.bleed?((outer.h-page.h)/2/outer.h*100):0;
-  const trimW=full?.bleed?page.w/outer.w*100:100;
-  const trimH=full?.bleed?page.h/outer.h*100:100;
-  const box=(x,y,w,h,label,cls)=>'<div class="ks-diagram-zone '+cls+'" style="left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%"><span>'+esc(label)+'</span></div>';
-  const zones=[];
-  for(const e of entries){
-   if(/full page/i.test(e.name))continue;
-   if(/double page|spread/i.test(e.name))continue;
-   if(!e.size)continue;
-   const w=Math.min(100,e.size.w/page.w*100),h=Math.min(100,e.size.h/page.h*100);
+  const find=(rx)=>entries.find(e=>rx.test(e.name));
+  const dps=find(/double page|spread/i),fp=find(/^full page$/i);
+  const defs=[
+   {code:"FP",rx:/^full page$/i,place:"full"},
+   {code:"HPH",rx:/half page horizontal/i,place:"bottom"},
+   {code:"HPV",rx:/half page vertical/i,place:"left"},
+   {code:"QPH",rx:/quarter page horizontal/i,place:"bottom-quarter"},
+   {code:"QPV",rx:/quarter page (portrait|vertical)/i,place:"top-right"},
+   {code:"EP",rx:/^eighth page( horizontal)?$/i,place:"bottom-right"}
+  ];
+  const single=defs.map(d=>{const e=entries.find(x=>d.rx.test(x.name));return e?{...d,e}:null;}).filter(Boolean);
+  const zones=single.map((d,i)=>{
+   const size=d.e.size||d.e.trim||page;
+   const w=Math.min(100,size.w/page.w*100),h=Math.min(100,size.h/page.h*100);
    let x=(100-w)/2,y=(100-h)/2;
-   const n=e.name.toLowerCase();
-   if(/half page horizontal/.test(n)){x=0;y=50;}
-   else if(/half page vertical/.test(n)){x=0;y=0;}
-   else if(/quarter.*portrait|quarter page vertical/.test(n)){x=50;y=0;}
-   else if(/quarter.*horizontal/.test(n)){x=0;y=75;}
-   else if(/eighth/.test(n)){x=50;y=75;}
-   else if(/sixth/.test(n)){x=50;y=0;}
-   else if(/twelfth/.test(n)){x=50;y=60;}
-   else if(/sixteenth/.test(n)){x=75;y=75;}
-   else if(/thirty-second/.test(n)){x=75;y=88;}
-   zones.push(box(x,y,w,h,e.name,"zone-"+(zones.length%5)));
-  }
-  const safe=full?.type?'<div class="ks-diagram-safe" style="width:'+Math.min(100,full.type.w/page.w*100)+'%;height:'+Math.min(100,full.type.h/page.h*100)+'%"></div>':"";
-  const diagram='<div class="ks-print-visual"><div class="ks-diagram-heading"><span>PAGE LAYOUT</span><strong>'+esc(trim)+' mm trim</strong></div><div class="ks-bleed-frame" style="aspect-ratio:'+outer.w+'/'+outer.h+'"><div class="ks-trim-frame" style="left:'+trimInsetX+'%;top:'+trimInsetY+'%;width:'+trimW+'%;height:'+trimH+'%">'+(zones.length?zones.join(""):'<div class="ks-full-page-fill">Full page</div>')+safe+'</div>'+(full?.bleed?'<i class="ks-crop tl"></i><i class="ks-crop tr"></i><i class="ks-crop bl"></i><i class="ks-crop br"></i>':"")+'</div><div class="ks-legend"><span><i class="bleed-key"></i> Bleed</span><span><i class="trim-key"></i> Trim</span><span><i class="zone-key"></i> Advert positions</span>'+(full?.type?'<span><i class="safe-key"></i> Type area</span>':"")+'</div></div>';
-  const rows=entries.map(e=>{
-   const ad=e.size?e.get("Size"):"—";
-   const type=e.get("Type")||"—",tr=e.get("Trim")||"—",bleed=e.get("Bleed")||"—";
-   return '<tr><th>'+esc(e.name)+'</th><td>'+esc(ad)+'</td><td>'+esc(type)+'</td><td>'+esc(tr)+'</td><td>'+esc(bleed)+'</td></tr>';
+   if(d.place==="full"){x=0;y=0}
+   if(d.place==="bottom"){x=0;y=100-h}
+   if(d.place==="left"){x=0;y=0}
+   if(d.place==="bottom-quarter"){x=0;y=100-h}
+   if(d.place==="top-right"){x=100-w;y=0}
+   if(d.place==="bottom-right"){x=100-w;y=100-h}
+   return '<button type="button" class="ks-zone '+(d.code==="FP"?"ks-zone-fp":"")+'" data-format="'+d.code+'" style="left:'+x+'%;top:'+y+'%;width:'+w+'%;height:'+h+'%" aria-label="'+d.code+' – '+esc(d.e.name)+'"><span>'+d.code+'</span></button>';
   }).join("");
-  const notes='<div class="ks-print-notes"><strong>Artwork guidance</strong><p>Use the dimensions in this table when preparing your artwork. Bleed, trim and type-area values are shown only where supplied in the Kelsey Media print specification source. A dash means no separate measurement was provided.</p></div>';
-  return '<section class="ks-print-spec">'+diagram+'<div class="ks-table-wrap"><table class="ks-dim-table"><thead><tr><th>Display</th><th>Advert dimensions</th><th>Type</th><th>Trim</th><th>Bleed</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+notes+'</section>';
+  const fpBleed=fp?.bleed;
+  const outer=fpBleed||page;
+  const bleedInsets=fpBleed?{x:(outer.w-page.w)/2/outer.w*100,y:(outer.h-page.h)/2/outer.h*100,w:page.w/outer.w*100,h:page.h/outer.h*100}:{x:0,y:0,w:100,h:100};
+  const safe=fp?.type?'<div class="ks-type-safe" style="width:'+Math.min(100,fp.type.w/page.w*100)+'%;height:'+Math.min(100,fp.type.h/page.h*100)+'%"></div>':"";
+  const singleDiagram='<section class="ks-interactive-section"><div class="ks-section-heading"><div><span class="ks-kicker">SINGLE-PAGE ADVERTS</span><h3>Choose an advert format</h3><p>Hover over a format or select it to highlight its position on the page.</p></div><span class="ks-page-size">'+esc(trim)+' mm</span></div><div class="ks-single-stage"><div class="ks-bleed-boundary" style="aspect-ratio:'+outer.w+'/'+outer.h+'"><div class="ks-single-page" style="left:'+bleedInsets.x+'%;top:'+bleedInsets.y+'%;width:'+bleedInsets.w+'%;height:'+bleedInsets.h+'%">'+zones+safe+'</div></div><div class="ks-diagram-legend"><span><i class="ks-key-bleed"></i> Bleed'+(fpBleed?' ('+esc(fp.get("Bleed"))+')':'')+'</span><span><i class="ks-key-trim"></i> Trim</span><span><i class="ks-key-safe"></i> Type area</span></div></div><div class="ks-format-picker" role="group" aria-label="Single-page advert formats">'+single.map(d=>'<button type="button" class="ks-format-option" data-format="'+d.code+'"><b>'+d.code+'</b><span>'+esc(d.e.name)+'</span></button>').join("")+'</div><div class="ks-format-detail" aria-live="polite"><span class="ks-detail-label">SELECT A FORMAT</span><strong>Advert dimensions will appear here</strong><p>Hover over or select one of the formats above.</p></div></section>';
+  const dpsSize=dps?.size||{w:page.w*2,h:page.h};
+  const dpsBleed=dps?.bleed;
+  const dpsMarkup=dps?'<section class="ks-interactive-section ks-dps-section"><div class="ks-section-heading"><div><span class="ks-kicker">DOUBLE-PAGE ADVERT</span><h3>Double-page spread (DPS)</h3><p>A separate two-page view, including the centre gutter.</p></div><span class="ks-page-size">'+dpsSize.w+' × '+dpsSize.h+' mm</span></div><div class="ks-dps-stage"><div class="ks-dps-bleed"><button type="button" class="ks-dps-zone ks-zone" data-format="DPS"><span>DPS</span></button><i class="ks-gutter-line"></i></div><div class="ks-diagram-legend"><span><i class="ks-key-bleed"></i> Bleed boundary'+(dpsBleed?' ('+esc(dps.get("Bleed"))+')':' (dimensions not supplied)')+'</span><span><i class="ks-key-trim"></i> Two-page trim</span><span><i class="ks-key-gutter"></i> Centre gutter</span></div></div><div class="ks-format-picker"><button type="button" class="ks-format-option" data-format="DPS"><b>DPS</b><span>Double-page spread</span></button></div><div class="ks-format-detail" aria-live="polite"><span class="ks-detail-label">DOUBLE-PAGE SPREAD</span><strong>'+esc(dps.get("Size")||"")+'</strong><p>Bleed dimensions are not specified in the supplied source. Please confirm with Kelsey Media Production.</p></div></section>':'';
+  const extras=entries.filter(e=>!single.some(d=>d.e===e)&&e!==dps);
+  const extraRows=extras.length?'<section class="ks-extra-formats"><h3>Additional advert formats</h3><div class="ks-extra-grid">'+extras.map(e=>'<div><strong>'+esc(e.name)+'</strong><span>'+esc(e.get("Size")||e.get("Trim")||"")+'</span></div>').join("")+'</div></section>':"";
+  const detailRows=single.map(d=>'<tr><th>'+d.code+' · '+esc(d.e.name)+'</th><td>'+esc(d.e.get("Size")||"")+'</td></tr>').join("");
+  const dpsRow=dps?'<tr><th>DPS · Double-page spread</th><td>'+esc(dps.get("Size")||"")+'</td></tr>':"";
+  const table='<section class="ks-source-table"><h3>Advert dimensions</h3><div class="ks-table-wrap"><table class="ks-dim-table"><thead><tr><th>Format</th><th>Advert dimensions</th></tr></thead><tbody>'+dpsRow+detailRows+'</tbody></table></div></section>';
+  const notes='<div class="ks-print-notes"><strong>Artwork guidance</strong><p>Bleed and type-area measurements are displayed only where provided in the supplied Kelsey Media specification. No bleed dimensions are stated for the DPS in this source; confirm these with Production before supplying artwork.</p></div>';
+  return '<section class="ks-print-spec">'+singleDiagram+dpsMarkup+extraRows+table+notes+'</section>';
  }
  function digitalPreview(item){
   const m=item.spec.match(/Dimensions?\s*:\s*(\d+)\s*px?\s*[Ww×x]\s*(\d+)\s*px?/i)||item.spec.match(/(\d+)\s*[×x]\s*(\d+)\s*px/i);
