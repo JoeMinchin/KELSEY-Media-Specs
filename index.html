@@ -6,7 +6,7 @@
 <title>Kelsey Media | Artwork Specifications</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=33">
+<link rel="stylesheet" href="./styles.css?v=35">
 </head>
 <body>
 <header class="header">
@@ -233,17 +233,19 @@
     const width=/MPU|Mobile Banner/i.test(p.label)?100:(isMobile?Math.min(100,(p.w/320)*100):Math.min(100,(p.w/970)*100));
     return '<div class="placement-unit placement-'+p.label.toLowerCase().replace(/[^a-z]+/g,"-")+'" style="--placement-width:'+width+'%;--placement-ratio:'+p.w+'/'+p.h+'"><span class="placement-name">'+esc(p.label)+'</span><b>'+p.w+' × '+p.h+' px</b></div>';
    };
-   const top=items.filter(p=>/Leaderboard|Billboard|Mobile Banner|Baseline banner/i.test(p.label));
+   const top=items.filter(p=>/Leaderboard|Billboard|Mobile Banner|Baseline banner|^Banner$/i.test(p.label));
    const side=items.filter(p=>/^(MPU|Double MPU)$/i.test(p.label));
    const skins=items.filter(p=>/Page Skin/i.test(p.label));
+   const inContent=items.filter(p=>!top.includes(p)&&!side.includes(p)&&!skins.includes(p));
    const topAds=top.map(unit).join("");
    const sideAds=side.map(unit).join("");
+   const contentAds=inContent.map(unit).join("");
    const skinAds=skins.map(unit).join("");
    const content=contentLabel?'<div class="mock-content-label">'+esc(contentLabel)+'</div>':'';
    if(isMobile){
-    return '<div class="device-preview device-preview-mobile"><div class="device-shell device-mobile"><div class="device-screen mobile-screen"><div class="device-status"></div><div class="mobile-page"><div class="mobile-site-header"></div><div class="mobile-top-ads">'+topAds+'</div><div class="mobile-site-content"></div><div class="mobile-in-content-ads">'+sideAds+'</div>'+content+'</div></div></div><span class="device-label">MOBILE</span></div>';
+    return '<div class="device-preview device-preview-mobile"><div class="device-shell device-mobile"><div class="device-screen mobile-screen"><div class="device-status"></div><div class="mobile-page"><div class="mobile-site-header"></div><div class="mobile-top-ads">'+topAds+'</div><div class="mobile-site-content"></div><div class="mobile-in-content-ads">'+contentAds+'+sideAds+'</div>'+content+'</div></div></div><span class="device-label">MOBILE</span></div>';
    }
-   return '<div class="device-preview device-preview-desktop"><div class="device-shell device-desktop"><div class="device-screen"><div class="browser-bar"><i></i><i></i><i></i></div><div class="device-page"><div class="mock-site-header"></div><div class="desktop-top-ads">'+topAds+'</div><div class="mock-site-content"><div class="mock-site-main">'+content+'</div><div class="mock-site-side">'+sideAds+'</div></div><div class="desktop-skins">'+skinAds+'</div></div></div><div class="desktop-stand"></div></div><span class="device-label">DESKTOP</span></div>';
+   return '<div class="device-preview device-preview-desktop"><div class="device-shell device-desktop"><div class="device-screen"><div class="browser-bar"><i></i><i></i><i></i></div><div class="device-page"><div class="mock-site-header"></div><div class="desktop-top-ads">'+topAds+'</div><div class="mock-site-content"><div class="mock-site-main">'+content+contentAds+'</div><div class="mock-site-side">'+sideAds+'</div></div><div class="desktop-skins">'+skinAds+'</div></div></div><div class="desktop-stand"></div></div><span class="device-label">DESKTOP</span></div>';
   }
  }
  function load(data){
