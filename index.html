@@ -76,17 +76,23 @@
    const get=key=>vals.find(v=>v[0].toLowerCase()===key.toLowerCase())?.[1]||"";
    const isFull=/full page/i.test(name),isSpread=/double page|spread/i.test(name);
    const trimSize=mm(get("Trim"))||{w:tw,h:th};
-   const bleed=mm(get("Bleed"));
+   const bleed=mm(get("Bleed"))||trimSize;
    const type=mm(get("Type")||get("Type area"));
    const adSize=isFull?trimSize:(mm(get("Size"))||trimSize);
    const pageW=isSpread?550:tw,pageH=th;
-   const scaleW=Math.min(100,adSize.w/pageW*100),scaleH=Math.min(100,adSize.h/pageH*100);
+   const bleedW=isSpread?pageW:bleed.w,bleedH=bleed.h;
+   const trimLeft=(bleedW-pageW)/2/bleedW*100,trimTop=(bleedH-pageH)/2/bleedH*100;
+   const trimWidth=pageW/bleedW*100,trimHeight=pageH/bleedH*100;
+   const adW=Math.min(100,adSize.w/pageW*100),adH=Math.min(100,adSize.h/pageH*100);
+   const adLeft=isFull?trimLeft:trimLeft;
+   const adBottom=isFull?100-trimTop-trimHeight:trimTop+trimHeight-adH;
+   const fullBlock=isFull?'<div class="bleed-ad-block"></div>':'';
    const safe=type?'<div class="clean-safe-area" style="width:'+Math.min(100,type.w/pageW*100)+'%;height:'+Math.min(100,type.h/pageH*100)+'%"></div>':"";
-   const block='<div class="clean-ad-block" style="width:'+scaleW+'%;height:'+scaleH+'%"></div>';
-   const spreadSeam=isSpread?'<div class="spread-seam"></div>':"";
-   const page='<div class="clean-print-page '+(isSpread?'spread':'')+'" style="aspect-ratio:'+pageW+'/'+pageH+'">'+block+safe+spreadSeam+'</div>';
+   const crop='<span class="crop-marks" aria-hidden="true"></span>';
+   const trimBox='<div class="trim-page" style="left:'+trimLeft+'%;top:'+trimTop+'%;width:'+trimWidth+'%;height:'+trimHeight+'%">'+(isFull?'':'<div class="clean-ad-block" style="left:0;bottom:0;width:'+adW+'%;height:'+adH+'%"></div>')+safe+(isSpread?'<div class="spread-seam"></div>':"")+'</div>';
+   const canvas='<div class="bleed-canvas '+(isSpread?'spread':'')+'" style="aspect-ratio:'+bleedW+'/'+bleedH+'">'+(isFull?fullBlock:'')+trimBox+crop+'</div>';
    const details=vals.map(v=>'<span><b>'+esc(v[0])+':</b> '+esc(v[1])+'</span>').join("");
-   return '<div class="format-card clean-format-card"><div class="print-preview-wrap clean-preview-wrap">'+page+'<span class="preview-caption">PAGE LAYOUT · PROPORTIONAL</span></div><div class="format-info"><h4>'+esc(name)+'</h4><p>'+esc(get("Size")||get("Trim")||"")+'</p><div class="format-details">'+details+'</div><small class="client-note">Diagram shows advert placement relative to trim size. Measurements above are authoritative.</small></div></div>';
+   return '<div class="format-card clean-format-card"><div class="print-preview-wrap clean-preview-wrap">'+canvas+'<span class="preview-caption">BLEED · TRIM · ADVERT POSITION</span></div><div class="format-info"><h4>'+esc(name)+'</h4><p>'+esc(get("Size")||get("Trim")||"")+'</p><div class="format-details">'+details+'</div><small class="client-note">Outer edge shows bleed; crop marks show trim. Green area shows advert placement. Measurements are authoritative.</small></div></div>';
   }).join("")+'</div>';
  }
  function digitalPreview(item){
