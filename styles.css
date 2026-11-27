@@ -78,3 +78,7 @@ body:has(.landing:not([hidden])) .header .brand>span{background:#6d9275}
  .landing-foot{font-size:6px}
  .digital-detail{grid-template-columns:1fr}
 }
+
+/* Larger print page mockups so clients can judge advert placement */
+.print-preview-page{width:150px;max-height:220px}
+@media(max-width:650px){.print-preview-page{width:120px;max-height:175px}}
