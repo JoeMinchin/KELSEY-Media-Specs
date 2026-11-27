@@ -124,3 +124,18 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
 .device-ad-desktop{max-width:100%;max-height:100%}
 .desktop-stand{height:17px;width:45px;background:#9ca69f;margin:0 auto;position:relative}
 .desktop-stand:after{content:"";position:absolute;width:80px;height:5px;background:#7f8982;bottom:-4px;left:50%;transform:translateX(-50%);border-radius:5px}
+
+/* Cleaner print format diagrams: trim frame, green advert block, dashed type-safe area */
+.clean-format-card{align-items:start}
+.clean-preview-wrap{min-height:190px;justify-content:flex-start;padding:18px 12px 12px}
+.clean-print-page{width:112px;max-width:100%;height:auto;min-height:130px;position:relative;background:#fff;border:1.5px solid #27332b;box-shadow:0 0 0 3px #fff,0 0 0 4px #91cda8;overflow:hidden}
+.clean-print-page.spread{width:224px}
+.clean-ad-block{position:absolute;left:4%;bottom:4%;background:#91cda8}
+.clean-safe-area{position:absolute;left:9%;top:9%;border:1px dashed #26372b;pointer-events:none}
+.clean-print-page.spread .clean-ad-block{left:2%;width:96%!important}
+.clean-print-page.spread .clean-safe-area{left:5%}
+.clean-format-card .format-info h4{margin-top:0}
+.clean-format-card .format-details{display:grid;gap:4px}
+.clean-format-card .format-details span{font-size:12px}
+.clean-format-card .client-note{display:block;margin-top:9px}
+@media(max-width:650px){.clean-preview-wrap{min-height:160px}.clean-print-page{width:94px;min-height:122px}.clean-print-page.spread{width:188px}}
