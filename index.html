@@ -68,6 +68,14 @@
   view(v);
  }
  window.kelseyNavigate=navigate;
+ // Bind the two landing choices directly as well as through delegation.
+ // This avoids missed clicks if another page-level listener changes.
+ document.querySelectorAll(".choice[data-view]").forEach(button=>{
+  button.addEventListener("click",function(event){
+   event.preventDefault();
+   navigate(this.dataset.view);
+  },true);
+ });
  window.addEventListener("popstate",e=>view(e.state?.kelseyView||"home"));
  document.addEventListener("click",e=>{
   const c=e.target.closest(".choice[data-view]"),b=e.target.closest("#backButton"),h=e.target.closest("[data-home]");
