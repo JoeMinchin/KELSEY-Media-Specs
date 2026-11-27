@@ -6,7 +6,7 @@
 <title>Kelsey Media | Artwork Specifications</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=22">
+<link rel="stylesheet" href="./styles.css?v=23">
 </head>
 <body>
 <header class="header">
@@ -117,9 +117,16 @@
    if(/twelfth/.test(n))return "12P";
    return name;
   };
+  const codeOrder=["DPS","FP","HPH","HPV","QPV","QPH","EP"];
+  const chosen=codeOrder.map(code=>{
+   if(code==="DPS")return entries.find(e=>codeFor(e.name)==="DPS");
+   if(code==="EP")return entries.find(e=>/^eighth page$/i.test(e.name))||entries.find(e=>/eighth page horizontal/i.test(e.name))||entries.find(e=>/eighth page vertical/i.test(e.name));
+   if(code==="QPV")return entries.find(e=>/quarter page (portrait|vertical)/i.test(e.name));
+   return entries.find(e=>codeFor(e.name)===code);
+  }).filter(Boolean);
   const makeThumb=e=>{
    const code=codeFor(e.name),isDps=code==="DPS";
-   const base=isDps?{w:550,h:page.h}:page;
+   const base=isDps?{w:e.size?.w||2*page.w+20,h:e.size?.h||page.h}:page;
    const size=e.size||base;
    const w=Math.min(100,size.w/base.w*100),h=Math.min(100,size.h/base.h*100);
    // Keep advert artwork inside the page with a visible margin, matching real magazine layouts.
@@ -138,16 +145,16 @@
    const bleed=!!outer||isDps;
    const pageClass=isDps?"ks-mini-spread":"ks-mini-page";
    const pageHtml='<div class="'+pageClass+'" style="aspect-ratio:'+base.w+'/'+base.h+';--ad-x:'+x+'%;--ad-y:'+y+'%;--ad-w:'+w+'%;--ad-h:'+h+'%"><span class="ks-mini-ad '+(code==="FP"||isDps?"is-full":"")+'"></span>'+(isDps?'<i class="ks-mini-gutter"></i>':"")+'</div>';
-   const bleedFrame=isDps?'<div class="ks-mini-bleed ks-mini-bleed-spread" style="aspect-ratio:556/346">'+pageHtml+'</div>':(bleed?'<div class="ks-mini-bleed" style="aspect-ratio:'+page.w+'/'+page.h+'">'+pageHtml+'</div>':pageHtml);
+   const bleedFrame=isDps?'<div class="ks-mini-bleed ks-mini-bleed-spread" style="aspect-ratio:'+(base.w+6)+'/'+(base.h+6)+'">'+pageHtml+'</div>':(bleed?'<div class="ks-mini-bleed" style="aspect-ratio:'+page.w+'/'+page.h+'">'+pageHtml+'</div>':pageHtml);
    return '<div class="ks-card-preview '+(bleed?'has-bleed':'')+'">'+bleedFrame+'<span class="ks-mini-caption">'+(isDps?"DPS · 550 × 340 mm · provisional bleed guide":bleed?"BLEED · TRIM · PAGE PLACEMENT":"PAGE PLACEMENT")+'</span></div>';
   };
   const cards=list=>list.map(e=>{
    const code=codeFor(e.name);
    return '<button type="button" class="ks-format-card" data-format="'+esc(code)+'">'+makeThumb(e)+'<span class="ks-format-code">'+esc(code)+'</span><strong>'+esc(e.name)+'</strong><span class="ks-card-hint">Hover to highlight dimensions</span></button>';
   }).join("");
-  const dps=entries.filter(e=>codeFor(e.name)==="DPS");
-  const single=entries.filter(e=>codeFor(e.name)!=="DPS");
-  const tableRows=entries.map(e=>{
+  const dps=chosen.filter(e=>codeFor(e.name)==="DPS");
+  const single=chosen.filter(e=>codeFor(e.name)!=="DPS");
+  const tableRows=chosen.map(e=>{
    const code=codeFor(e.name);
    return '<tr data-format-row="'+esc(code)+'"><th><span class="ks-table-code">'+esc(code)+'</span>'+esc(e.name)+'</th><td>'+esc(e.get("Size")||e.get("Trim")||"—")+'</td><td>'+esc(e.get("Type")||"—")+'</td><td>'+esc(e.get("Trim")||"—")+'</td><td>'+esc(e.get("Bleed")||"—")+'</td></tr>';
   }).join("");
