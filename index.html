@@ -181,10 +181,10 @@
    if(w&&h)placements.push({label,w,h,devices});
   };
   // Multi-format campaigns: preserve every supplied size separately.
-  const re=/(Leaderboard|Double MPU|MPU|Billboard|Mobile Banner|Page Skin(?: \\(Left\\)| \\(Right\\))?)\\s*:\\s*(\\d+)\\s*px?\\s*(?:W)?\\s*[×x]\\s*(\\d+)\\s*px?/gi;
+  const re=/(Leaderboard|Double MPU|MPU|Billboard|Mobile Banner|Page Skin(?: \(Left\)| \(Right\))?)\s*:\s*(\d+)\s*px?\s*(?:W)?\s*[×x]\s*(\d+)\s*px?/gi;
   let match;
   while((match=re.exec(spec))){
-   const label=match[1].replace(/\\s*\\((?:Left|Right)\\)/i,"");
+   const label=match[1].replace(/\s*\((?:Left|Right)\)/i,"");
    const w=+match[2],h=+match[3];
    const deviceMap={
     "Leaderboard":["desktop"],
@@ -197,8 +197,8 @@
    add(label,w,h,deviceMap[label]||["desktop"]);
   }
   if(!placements.length){
-   const dim=spec.match(/Dimensions?\\s*:\\s*(\\d+)\\s*px?\\s*[Ww×x]\\s*(\\d+)\\s*px?/i)||
-             spec.match(/(\\d+)\\s*[×x]\\s*(\\d+)\\s*px/i);
+   const dim=spec.match(/Dimensions?\s*:\s*(\d+)\s*px?\s*[Ww×x]\s*(\d+)\s*px?/i)||
+             spec.match(/(\d+)\s*[×x]\s*(\d+)\s*px/i);
    const w=dim?+dim[1]:0,h=dim?+dim[2]:0;
    if(w&&h){
     let devices=["desktop"];
@@ -210,7 +210,7 @@
    }
   }
   const bespoke=/fireplace takeover|^video$/i.test(item.name);
-  const responsiveContent=/advertorial|^60\\/40$/i.test(item.name);
+  const responsiveContent=/advertorial|^60\/40$/i.test(item.name);
   if(bespoke){
    return '<div class="digital-preview-area device-stage device-stage-note"><div class="preview-guidance"><strong>Bespoke creative</strong><span>No fixed device layout or artwork dimensions are specified. Confirm the placement with the Digital team before supplying artwork.</span></div></div>';
   }
