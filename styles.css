@@ -381,3 +381,33 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
 
 .ks-bleed-boundary.trim-only{background:#fff;border:0}
 .ks-bleed-boundary.trim-only .ks-single-page{border:1.5px solid #294d32}
+
+/* Separate advert-format boxes linked to highlighted measurement rows */
+.ks-format-group{padding:25px 28px;border-bottom:1px solid #e4eee5}
+.ks-group-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:17px}
+.ks-group-heading h3{margin:4px 0 5px;color:#254a2e;font:700 19px Manrope}
+.ks-group-heading p{margin:0;color:#708174;font-size:11px}
+.ks-format-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:11px}
+.ks-format-card{min-height:104px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:7px;padding:15px;background:#f7fbf7;border:1px solid #dceade;border-radius:9px;text-align:left;cursor:pointer;color:#294c31;transition:background .15s,border-color .15s,box-shadow .15s,transform .15s}
+.ks-format-card:hover,.ks-format-card.is-active{background:#e5f4e8;border-color:#80bd8b;box-shadow:0 0 0 3px #a5d8b033;transform:translateY(-1px)}
+.ks-format-code{display:inline-flex;align-items:center;justify-content:center;min-width:38px;padding:4px 7px;border-radius:5px;background:#dcefe0;color:#32683e;font:800 11px Manrope;letter-spacing:.5px}
+.ks-format-card strong{font:700 13px Manrope;color:#294c31}
+.ks-card-hint{font-size:9px;color:#78907b}
+.ks-dps-group{background:#f8fbf8}
+.ks-dps-group .ks-format-card-grid{grid-template-columns:minmax(190px,280px)}
+.ks-source-table{padding:25px 28px 0}
+.ks-source-table .ks-group-heading{margin-bottom:13px}
+.ks-dim-table tbody tr{transition:background .15s,box-shadow .15s}
+.ks-dim-table tbody tr.is-highlighted{background:#dff1e2!important;box-shadow:inset 4px 0 #65ad74}
+.ks-dim-table tbody tr.is-highlighted th,.ks-dim-table tbody tr.is-highlighted td{color:#244c2d;font-weight:700}
+.ks-table-code{display:inline-flex;min-width:34px;margin-right:8px;padding:3px 5px;justify-content:center;border-radius:4px;background:#edf6ee;color:#3b7547;font:800 9px Manrope}
+.ks-table-note{padding:0 0 20px;color:#728174;font-size:10px;line-height:1.5}
+@media(max-width:680px){
+ .ks-format-group,.ks-source-table{padding:19px 14px}
+ .ks-format-card-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .ks-format-card{min-height:94px;padding:11px}
+ .ks-format-card strong{font-size:11px}
+ .ks-card-hint{font-size:8px}
+ .ks-dps-group .ks-format-card-grid{grid-template-columns:1fr}
+ .ks-dim-table{min-width:650px}
+}
