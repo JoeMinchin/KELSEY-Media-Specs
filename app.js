@@ -1,71 +1,79 @@
 let DATA;
-let selectedPublication = null;
-let activeDigitalCategory = "All";
-const $ = (id) => document.getElementById(id);
-fetch("data.json").then(r => r.json()).then(data => { DATA=data; init(); }).catch(() => {
-  $("publicationList").innerHTML = '<div class="no-results">Unable to load the specifications data. Please refresh the page.</div>';
-});
+const $=id=>document.getElementById(id);
+fetch("data.json").then(r=>r.json()).then(data=>{DATA=data;init();}).catch(()=>{$("printList").textContent="Unable to load specifications. Please refresh the page.";});
 function init(){
-  $("publicationCount").textContent = DATA.publications.length;
-  const trims = [...new Set(DATA.publications.map(p=>p.trim))].sort();
-  trims.forEach(v => $("trimFilter").add(new Option(v+" mm",v)));
-  $("skinNote").textContent = "The source spreadsheet lists page skins as valid only for: " + DATA.pageSkinTitles.join(", ") + ". Check the title and booking before accepting page-skin artwork.";
-  renderPublications();
-  renderDigitalTabs();
-  renderDigital();
-  $("publicationSearch").addEventListener("input",renderPublications);
-  $("trimFilter").addEventListener("change",renderPublications);
-  $("digitalSearch").addEventListener("input",renderDigital);
-  document.querySelectorAll("[data-view]").forEach(a=>a.addEventListener("click",()=>setActiveNav(a.dataset.view)));
-  document.querySelectorAll("[data-jump]").forEach(a=>a.addEventListener("click",()=>setActiveNav(a.dataset.jump)));
-  document.querySelectorAll("[data-open-view]").forEach(el=>el.addEventListener("click",()=>openView(el.dataset.openView)));
-  openView("home");
-
-  document.querySelector(".mobile-menu").addEventListener("click",()=>document.querySelector(".top-nav").classList.toggle("open"));
-  document.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();$("publicationSearch").focus();}});
+ renderPrint(DATA.publications);
+ renderDigital();
+ $("printSearch").addEventListener("input",e=>{
+  const q=e.target.value.trim().toLowerCase();
+  renderPrint(DATA.publications.filter(p=>p.name.toLowerCase().includes(q)));
+ });
+ $("skinNote").textContent="Page skins are only valid for the following titles, as stated in the supplied Digital Specs spreadsheet: "+DATA.pageSkinTitles.join(", ")+".";
+ document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
+ $("backButton").addEventListener("click",()=>showView("home"));
+ document.querySelector("[data-home]").addEventListener("click",e=>{e.preventDefault();showView("home");});
+ showView("home");
 }
-function openView(view){
-  document.body.classList.toggle("show-print",view==="print");
-  document.body.classList.toggle("show-digital",view==="digital");
-  document.body.classList.toggle("show-home",view==="home");
-  setActiveNav(view);
-  window.scrollTo({top:0,behavior:"smooth"});
+function showView(view){
+ $("landing").hidden=view!=="home";
+ $("printPage").hidden=view!=="print";
+ $("digitalPage").hidden=view!=="digital";
+ $("backButton").hidden=view==="home";
+ document.body.classList.toggle("spec-open",view!=="home");
+ window.scrollTo({top:0,behavior:"instant"});
+ if(view==="print") $("printSearch").focus({preventScroll:true});
 }
-function setActiveNav(view){
-  document.querySelectorAll(".nav-link").forEach(a=>a.classList.toggle("active",a.dataset.view===view));
-  document.querySelector(".top-nav").classList.remove("open");
-}
-function renderPublications(){
-  const q=$("publicationSearch").value.trim().toLowerCase(), trim=$("trimFilter").value;
-  const list=DATA.publications.filter(p=>p.name.toLowerCase().includes(q)&&(!trim||p.trim===trim));
-  $("publicationList").innerHTML=list.length?list.map(p=>`<button class="publication-item ${selectedPublication===p.name?"selected":""}" data-name="${escapeAttr(p.name)}"><span><span class="pub-name">${escapeHtml(p.name)}</span><span class="pub-meta">${escapeHtml(p.trim)} mm trim</span></span><span class="pub-arrow">→</span></button>`).join(""):'<div class="no-results">No publications match your search.</div>';
-  $("publicationList").querySelectorAll("[data-name]").forEach(b=>b.addEventListener("click",()=>selectPublication(b.dataset.name)));
-}
-function selectPublication(name){
-  selectedPublication=name; const p=DATA.publications.find(x=>x.name===name); renderPublications();
+function renderPrint(publications){
+ $("printCount").textContent=publications.length+" TITLES";
+ $("printList").innerHTML=publications.length?publications.map((p,i)=>{
   const specs=DATA.printSpecs[p.trim];
-  let content=`<div class="detail-top"><div><div class="eyebrow">PUBLICATION / PRINT</div><h3>${escapeHtml(p.name)}</h3><p>Print advert dimensions and formats</p></div><div class="trim-badge">${escapeHtml(p.trim)} mm</div></div>`;
-  if(specs){
-    content+=`<div class="detail-label">AVAILABLE ADVERT FORMATS · DIMENSIONS IN MM</div><div class="format-grid">`;
-    Object.entries(specs).forEach(([name,values])=>{
-      const primary=values.find(v=>v[0]==="Size")?.[1] || values[0][1];
-      content+=`<div class="format-card"><div class="format-name">${escapeHtml(name)}</div><div class="format-size">${escapeHtml(primary)}</div><div class="format-kind">${values.map(v=>`${escapeHtml(v[0])}: ${escapeHtml(v[1])}`).join(" · ")}</div></div>`;
-    });
-    content+="</div>";
-  }else{
-    content+=`<div class="detail-warning">The supplied 2026 PDF lists this publication's trim size, but does not include a matching advert-format panel. Please confirm the advert dimensions with Production before artwork is prepared.</div>`;
-  }
-  $("printDetail").innerHTML=content;
+  return `<article class="accordion-item">
+   <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="print-content-${i}">
+    <span class="plus">+</span><span class="item-name">${esc(p.name)}</span><span class="item-meta">${esc(p.trim)} mm</span>
+   </button>
+   <div class="accordion-content" id="print-content-${i}" hidden>${specs?formatCards(specs):'<div class="missing-note">The supplied 2026 print PDF lists this publication as '+esc(p.trim)+' mm but does not provide a matching advert-format panel. Please confirm the advert dimensions with Production before preparing artwork.</div>'}</div>
+  </article>`;
+ }).join(""):'<div class="empty-list">No publications found. Try another search.</div>';
+ bindAccordions($("printList"));
 }
-function renderDigitalTabs(){
-  const cats=["All",...new Set(DATA.digitalSpecs.map(x=>x.category))];
-  $("digitalTabs").innerHTML=cats.map(c=>`<button class="tab-button ${c===activeDigitalCategory?"active":""}" data-category="${escapeAttr(c)}">${escapeHtml(c)}</button>`).join("");
-  $("digitalTabs").querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{activeDigitalCategory=b.dataset.category;renderDigitalTabs();renderDigital();}));
+function formatCards(specs){
+ return `<div class="format-grid">${Object.entries(specs).map(([name,values])=>{
+  const main=values.find(v=>v[0]==="Size")?.[1]||values[0][1];
+  const detail=values.map(v=>`${esc(v[0])}: ${esc(v[1])}`).join(" · ");
+  return `<div class="format-card"><h4>${esc(name)}</h4><p>${esc(main)}</p><small>${detail}</small></div>`;
+ }).join("")}</div>`;
 }
 function renderDigital(){
-  const q=$("digitalSearch").value.toLowerCase().trim();
-  const rows=DATA.digitalSpecs.filter(x=>(activeDigitalCategory==="All"||x.category===activeDigitalCategory)&&[x.category,x.type,x.dimensions,x.details].join(" ").toLowerCase().includes(q));
-  $("digitalGrid").innerHTML=rows.length?rows.map(x=>`<article class="digital-card"><div class="digital-card-top"><span class="digital-category">${escapeHtml(x.category.toUpperCase())}</span><span class="file-size">${escapeHtml(x.maxFileSize==="—"?"BESPOKE":x.maxFileSize+" MAX")}</span></div><h3>${escapeHtml(x.type)}</h3><div class="digital-dim">${escapeHtml(x.dimensions)}</div><div class="digital-format">${escapeHtml(x.format)}</div><p class="digital-detail">${escapeHtml(x.details)}</p></article>`).join(""):'<div class="no-results">No digital formats match your search.</div>';
+ const categories=[...new Set(DATA.digitalSpecs.map(x=>x.category))];
+ $("digitalList").innerHTML=categories.map((category,i)=>{
+  const items=DATA.digitalSpecs.filter(x=>x.category===category);
+  return `<article class="accordion-item">
+   <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="digital-category-${i}">
+    <span class="plus">+</span><span class="category-name">${esc(category)}</span><span class="category-count">${items.length} ${items.length===1?"FORMAT":"FORMATS"}</span>
+   </button>
+   <div class="accordion-content" id="digital-category-${i}" hidden>
+    <div class="digital-items">${items.map((item,j)=>`<article class="digital-format">
+     <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="digital-item-${i}-${j}">
+      <span class="plus">+</span><span class="item-name">${esc(item.name)}</span>
+     </button>
+     <div class="accordion-content" id="digital-item-${i}-${j}" hidden><div class="digital-copy">${formatText(item.spec)}</div>${item.note?`<div class="digital-copy"><strong>${esc(item.note)}</strong></div>`:""}</div>
+    </article>`).join("")}</div>
+   </div>
+  </article>`;
+ }).join("");
+ bindAccordions($("digitalList"));
 }
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function escapeAttr(s){return escapeHtml(s);}
+function bindAccordions(root){
+ root.querySelectorAll(":scope > .accordion-item > .accordion-trigger, .digital-format > .accordion-trigger").forEach(button=>{
+  button.addEventListener("click",()=>{
+   const open=button.getAttribute("aria-expanded")==="true";
+   button.setAttribute("aria-expanded",String(!open));
+   const panel=document.getElementById(button.getAttribute("aria-controls"));
+   panel.hidden=open;
+  });
+ });
+}
+function formatText(text){
+ return esc(text).replace(/(^|\n\n)([^:\n]{2,45}:)/g,(m,start,label)=>start+"<strong>"+label+"</strong>");
+}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}

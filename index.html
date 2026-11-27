@@ -1,98 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#a5d8b0">
-  <meta name="description" content="Kelsey Media print and digital advertising artwork specifications.">
-  <title>Kelsey Media | Artwork specifications</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#a5d8b0"><meta name="description" content="Kelsey Media print and digital artwork specifications">
+<title>Kelsey Media | Artwork Specifications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body class="landing-mode">
-<header class="site-header">
-  <a class="brand" href="#" aria-label="Kelsey Media home">
-    <img src="assets/kelsey-logo.png" alt="Kelsey Media logo">
-    <span class="brand-divider"></span><span class="brand-caption">ARTWORK<br>SPECIFICATIONS</span>
-  </a>
-  <nav class="top-nav" aria-label="Main navigation">
-    <a href="#home" class="nav-link active" data-view="home">Home</a>
-    <a href="#print" class="nav-link" data-view="print">Print</a>
-    <a href="#digital" class="nav-link" data-view="digital">Digital</a>
-  </nav>
-  <button class="mobile-menu" id="menuToggle" aria-label="Open navigation">☰</button>
+<body>
+<header class="header">
+ <a class="brand" href="#" data-home><img src="assets/kelsey-logo.png" alt="Kelsey Media"><span></span><small>ARTWORK<br>SPECIFICATIONS</small></a>
+ <button class="back-button" id="backButton" hidden>← Back to selection</button>
 </header>
-
 <main>
-  <section class="choice-hero" id="home">
-    <div class="choice-heading">
-      <div class="eyebrow"><span class="eyebrow-dot"></span> KELSEY MEDIA · PRODUCTION</div>
-      <h1>Artwork specifications</h1>
-      <p>Select the type of advertising artwork you need.</p>
-    </div>
-    <div class="choice-panels">
-      <button class="choice-panel print-panel" type="button" data-open-view="print">
-        <span class="panel-index">01 / PRINT</span>
-        <span class="panel-illustration print-illustration" aria-hidden="true">
-          <span class="print-sheet"><i></i><b></b><em></em></span>
-          <span class="measure measure-w">210 mm</span><span class="measure measure-h">297 mm</span>
-        </span>
-        <span class="panel-bottom"><span><strong>PRINT SPECS</strong><small>Publication sizes, advert formats and print requirements.</small></span><span class="panel-arrow">↗</span></span>
-        <span class="panel-cta">VIEW PRINT SPECIFICATIONS <span>→</span></span>
-      </button>
-      <button class="choice-panel digital-panel" type="button" data-open-view="digital">
-        <span class="panel-index">02 / DIGITAL</span>
-        <span class="panel-illustration digital-illustration" aria-hidden="true">
-          <span class="device device-desktop"><i></i><b></b></span>
-          <span class="device device-mobile"><i></i></span>
-          <span class="device device-card"><i></i><b></b></span>
-        </span>
-        <span class="panel-bottom"><span><strong>DIGITAL SPECS</strong><small>Web, email, branded content and social media formats.</small></span><span class="panel-arrow">↗</span></span>
-        <span class="panel-cta">VIEW DIGITAL SPECIFICATIONS <span>→</span></span>
-      </button>
-    </div>
-    <div class="home-foot"><span>KELSEY MEDIA · ARTWORK SPECIFICATIONS</span><span>2026 EDITION</span></div>
-  </section>
+ <section class="landing" id="landing">
+  <div class="landing-heading"><div class="eyebrow">KELSEY MEDIA · PRODUCTION</div><h1>Artwork specifications</h1><p>Select the type of advertising artwork you need.</p></div>
+  <div class="split">
+   <button class="choice print-choice" data-view="print" type="button">
+    <span class="choice-kicker">01 / ADVERTISING</span>
+    <span class="print-art" aria-hidden="true"><i></i><b></b><em></em></span>
+    <span class="choice-title">PRINT SPECS</span><span class="choice-desc">Publication sizes, advert formats and print requirements.</span>
+    <span class="choice-action">VIEW PRINT SPECIFICATIONS <b>↗</b></span>
+   </button>
+   <button class="choice digital-choice" data-view="digital" type="button">
+    <span class="choice-kicker">02 / ADVERTISING</span>
+    <span class="digital-art" aria-hidden="true"><i></i><b></b><em></em></span>
+    <span class="choice-title">DIGITAL SPECS</span><span class="choice-desc">Web, email, branded content and social media formats.</span>
+    <span class="choice-action">VIEW DIGITAL SPECIFICATIONS <b>↗</b></span>
+   </button>
+  </div>
+  <div class="landing-foot"><span>KELSEY MEDIA · ARTWORK SPECIFICATIONS</span><span>2026</span></div>
+ </section>
 
-  <section class="content-section" id="print">
-    <div class="section-heading">
-      <div><div class="eyebrow">01 / PRINT</div><h2>Print specifications</h2><p>Find the correct advert dimensions for your publication.</p></div>
-      <button class="back-home" type="button" data-open-view="home">← Back to selection</button>
-    </div>
-    <div class="search-panel">
-      <label class="search-box"><span>⌕</span><input id="publicationSearch" type="search" placeholder="Search publication..." autocomplete="off"><kbd>⌘ K</kbd></label>
-      <div class="filter-wrap"><label for="trimFilter">Trim size</label><select id="trimFilter"><option value="">All trim sizes</option></select></div>
-    </div>
-    <div class="print-layout">
-      <div class="publication-list" id="publicationList" aria-label="Publications"></div>
-      <article class="spec-detail" id="printDetail">
-        <div class="empty-state"><div class="empty-icon">↖</div><h3>Select a publication</h3><p>Choose a title from the list to view its trim size, printer and available advert dimensions.</p></div>
-      </article>
-    </div>
-  </section>
+ <section class="spec-page" id="printPage" hidden>
+  <div class="page-intro"><div class="eyebrow">01 / PRINT ADVERTISING</div><h1>Print specifications</h1><p>Find the artwork dimensions for the publication you have booked. Specifications vary between titles, so check the requirements for each magazine.</p></div>
+  <label class="search"><span>⌕</span><input id="printSearch" type="search" placeholder="Search publications..." autocomplete="off"><kbd>SEARCH</kbd></label>
+  <div class="list-heading"><span>PUBLICATION</span><span id="printCount"></span></div>
+  <div class="accordion-list" id="printList"></div>
+ </section>
 
-  <section class="digital-section" id="digital">
-    <div class="content-section">
-      <div class="section-heading">
-        <div><div class="eyebrow">02 / DIGITAL</div><h2>Digital specifications</h2><p>Creative requirements for web, email, branded content and social placements.</p></div>
-        <button class="back-home" type="button" data-open-view="home">← Back to selection</button>
-      </div>
-      <div class="digital-toolbar">
-        <div class="digital-tabs" id="digitalTabs"></div>
-        <label class="search-box digital-search"><span>⌕</span><input id="digitalSearch" type="search" placeholder="Search digital formats..."></label>
-      </div>
-      <div class="digital-grid" id="digitalGrid"></div>
-      <aside class="note-panel"><div class="note-icon">i</div><div><strong>Page skin availability</strong><p id="skinNote"></p></div></aside>
-    </div>
-  </section>
+ <section class="spec-page" id="digitalPage" hidden>
+  <div class="page-intro"><div class="eyebrow">02 / DIGITAL ADVERTISING</div><h1>Digital specifications</h1><p>Choose a digital advertising category to view the available formats and artwork requirements.</p></div>
+  <div class="accordion-list digital-categories" id="digitalList"></div>
+  <aside class="page-skin-note"><strong>Page skin availability</strong><p id="skinNote"></p></aside>
+ </section>
 </main>
-<footer class="site-footer">
-  <div class="footer-brand"><img src="assets/kelsey-logo.png" alt="Kelsey Media"><span>ARTWORK SPECIFICATIONS</span></div>
-  <p>For guidance on a booking or a specification not listed here, please contact your Kelsey Media representative.</p>
-  <small>© Kelsey Media · Specifications based on supplied 2026 source documents.</small>
-</footer>
+<footer><img src="assets/kelsey-logo.png" alt="Kelsey Media"><span>ARTWORK SPECIFICATIONS</span><small>© Kelsey Media</small></footer>
 <script src="app.js"></script>
-</body>
-</html>
+</body></html>

@@ -2,339 +2,227 @@
   "publications": [
     {
       "name": "220 Triathlon",
-      "trim": "200 x 270",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Agricultural Trader",
-      "trim": "265 x 310",
-      "printer": "Mortons",
-      "specsAvailable": false
+      "trim": "265 x 310"
     },
     {
       "name": "Amateur Gardening",
-      "trim": "205 x 290",
-      "printer": "Walstead",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Amateur Photographer",
-      "trim": "200 x 270",
-      "printer": "Walstead",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Aston Martin",
-      "trim": "200 x 270",
-      "printer": "S&G",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Cage & Aviary Birds",
-      "trim": "265 x 320",
-      "printer": "Mortons",
-      "specsAvailable": true
+      "trim": "265 x 320"
     },
     {
       "name": "Canal Boat",
-      "trim": "205 x 290",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Car Mechanics",
-      "trim": "205 x 290",
-      "printer": "Walstead",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Car Mechanics Expert",
-      "trim": "200 x 270",
-      "printer": "S&G",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Classic & Vint Coms",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Classic Car Buyer",
-      "trim": "265 x 320",
-      "printer": "Mortons",
-      "specsAvailable": true
+      "trim": "265 x 320"
     },
     {
       "name": "Classic Ford",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Classic Jaguar",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Classic Massey",
-      "trim": "200 x 270",
-      "printer": "S&G",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Classic Mercedes",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Classic Truck",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Classics World",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Coast",
-      "trim": "205 x 290",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Country Smallholder",
-      "trim": "205 x 290",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Crop Production Mag",
-      "trim": "205 x 290",
-      "printer": "TBC",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Fishing News",
-      "trim": "265 x 311",
-      "printer": "Mortons",
-      "specsAvailable": true
+      "trim": "265 x 311"
     },
     {
       "name": "Ford & Fordson",
-      "trim": "200 x 270",
-      "printer": "S&G",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Holiday Living",
-      "trim": "200 x 270",
-      "printer": "S&G",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Jaguar World",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Match",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Men’s Fitness",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "MG Enthusiast",
-      "trim": "200 x 270",
-      "printer": "S&G",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Mini World",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Motorsport News",
-      "trim": "265 x 340",
-      "printer": "Mortons",
-      "specsAvailable": true
+      "trim": "265 x 340"
     },
     {
       "name": "Old Glory",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Park Home News",
-      "trim": "210 x 297",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "210 x 297"
     },
     {
       "name": "Park Homes & Hol Liv",
-      "trim": "200 x 270",
-      "printer": "S&G",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Platinum",
-      "trim": "205 x 290",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Practical Pigs",
-      "trim": "200 x 270",
-      "printer": "S&G",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Professional Recovery",
-      "trim": "205 x 290",
-      "printer": "S&G",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Psychologies",
-      "trim": "200 x 270",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Rolls Royce & Bentley",
-      "trim": "200 x 270",
-      "printer": "S&G",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Sea Angler",
-      "trim": "205 x 290",
-      "printer": "Walstead",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Ships Monthly",
-      "trim": "200 x 270",
-      "printer": "Walstead",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Show Guides",
-      "trim": "200 x 270",
-      "printer": "S&G",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Stuff",
-      "trim": "200 x 270",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "The Christmas Mag",
-      "trim": "210 x 297",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "210 x 297"
     },
     {
       "name": "The Farmers Mart",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "The Great Outdoors",
-      "trim": "205 x 290",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Top Santé",
-      "trim": "200 x 270",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "This England",
-      "trim": "205 x 290",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Tractor & Machinery",
-      "trim": "210 x 297",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "210 x 297"
     },
     {
       "name": "Trucking",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Ulitimate Music Guide",
-      "trim": "205 x 290",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Ultimate Record Coll",
-      "trim": "205 x 290",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Uncut",
-      "trim": "205 x 290",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "205 x 290"
     },
     {
       "name": "Volks World",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "VWT",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Women’s Fitness",
-      "trim": "200 x 270",
-      "printer": "Acorn",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "World Soccer",
-      "trim": "200 x 270",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "200 x 270"
     },
     {
       "name": "Your Horse",
-      "trim": "205 x 290",
-      "printer": "Gibbons",
-      "specsAvailable": true
+      "trim": "205 x 290"
     }
   ],
   "printSpecs": {
@@ -648,163 +536,123 @@
   "digitalSpecs": [
     {
       "category": "Web Sponsorship",
-      "type": "Leaderboard",
-      "dimensions": "728 × 90 px",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply the creative and destination URL."
+      "name": "Leaderboard",
+      "spec": "Please supply your Leaderboard creative and the URL you would like the advert to link to, using the specifications below:\n\nDimensions: 728px W × 90px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Web Sponsorship",
-      "type": "MPU",
-      "dimensions": "300 × 250 px",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply the creative and destination URL."
+      "name": "MPU",
+      "spec": "Please supply your MPU creative and the URL you would like the advert to link to, using the specifications below:\n\nDimensions: 300px W × 250px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Web Sponsorship",
-      "type": "Double MPU",
-      "dimensions": "300 × 600 px",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply the creative and destination URL."
+      "name": "Double MPU",
+      "spec": "Please supply your Double MPU creative and the URL you would like the advert to link to, using the specifications below:\n\nDimensions: 300px W × 600px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Web Sponsorship",
-      "type": "Billboard",
-      "dimensions": "970 × 250 px",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply the creative and destination URL."
+      "name": "Billboard",
+      "spec": "Please supply your Billboard creative and the URL you would like the advert to link to, using the specifications below:\n\nDimensions: 970px W × 250px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Web Sponsorship",
-      "type": "Mobile Banner",
-      "dimensions": "320 × 50 px",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply the creative and destination URL."
+      "name": "Mobile Banner",
+      "spec": "Please supply your Mobile Banner creative and the URL you would like the advert to link to, using the specifications below:\n\nDimensions: 320px W × 50px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Web Sponsorship",
-      "type": "Page Takeover",
-      "dimensions": "Multiple sizes",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Leaderboard 728 × 90; MPU 300 × 250; Double MPU 300 × 600; Billboard 970 × 250; Mobile Banner 320 × 50; Page Skin left and right 115 × 800 px. Page skins only valid for selected titles (see notes)."
+      "name": "Page Takeover",
+      "spec": "Please supply your creatives and the URL you would like them to link to using the dimensions below:\n\nLeaderboard: 728px W × 90px H\nMPU: 300px W × 250px H\nDouble MPU: 300px W × 600px\nBillboard: 970px × 250px\nMobile Banner: 320px W × 50px H\nPage Skin (Left): 115px W × 800px H\nPage Skin (Right): 115px W × 800px H\n\nPlease ensure that all banners are supplied using the following formats:\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": "Skins only valid for: 220 Triathlon, Amateur Photographer, Classics World, Coast, CPM, Fast Car, Fishing News, Mens Fitness, Platinum, Profi, Psychologies, Sea Angler, Stuff, The Great Outdoors, Top Sante, Trucking, Vineyard Magazine, Womens Fitness, World Soccer, Your Horse"
     },
     {
       "category": "Web Sponsorship",
-      "type": "Fireplace Takeover",
-      "dimensions": "Bespoke",
-      "format": "Discuss with the team",
-      "maxFileSize": "—",
-      "details": "Creative specifications and requirements are tailored to the booking. Contact the team directly."
+      "name": "Fireplace Takeover",
+      "spec": "As this is a bespoke Fireplace Takeover, the creative specifications and requirements are tailored to the booking. Please get in touch with our team directly to discuss the required artwork and technical specifications.",
+      "note": ""
     },
     {
       "category": "Web CPM",
-      "type": "Leaderboard",
-      "dimensions": "728 × 90 px",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply the creative and destination URL."
+      "name": "Leaderboard",
+      "spec": "Please supply your Leaderboard creative and the URL you would like the advert to link to, using the specifications below:\n\nDimensions: 728px W × 90px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Web CPM",
-      "type": "MPU",
-      "dimensions": "300 × 250 px",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply the creative and destination URL."
+      "name": "MPU",
+      "spec": "Please supply your MPU creative and the URL you would like the advert to link to, using the specifications below:\n\nDimensions: 300px W × 250px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Web CPM",
-      "type": "Double MPU",
-      "dimensions": "300 × 600 px",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply the creative and destination URL."
+      "name": "Double MPU",
+      "spec": "Please supply your Double MPU creative and the URL you would like the advert to link to, using the specifications below:\n\nDimensions: 300px W × 600px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Web CPM",
-      "type": "Billboard",
-      "dimensions": "970 × 250 px",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply the creative and destination URL."
+      "name": "Billboard",
+      "spec": "Please supply your Billboard creative and the URL you would like the advert to link to, using the specifications below:\n\nDimensions: 970px W × 250px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Web CPM",
-      "type": "Mobile Banner",
-      "dimensions": "320 × 50 px",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply the creative and destination URL."
+      "name": "Mobile Banner",
+      "spec": "Please supply your Mobile Banner creative and the URL you would like the advert to link to, using the specifications below:\n\nDimensions: 320px W × 50px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Web CPM",
-      "type": "Page Skin",
-      "dimensions": "115 × 800 px each",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply two separate image files (left and right) and the destination URL. Page skins only valid for selected titles (see notes)."
+      "name": "Page Skin",
+      "spec": "Please supply your Page Skin creatives as two separate image files along with the URL you would like the adverts to link to, using the specifications below:\n\nDimensions: 115px W × 800px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": "Skins only valid for: 220 Triathlon, Amateur Photographer, Classics World, Coast, CPM, Fast Car, Fishing News, Mens Fitness, Platinum, Profi, Psychologies, Sea Angler, Stuff, The Great Outdoors, Top Sante, Trucking, Vineyard Magazine, Womens Fitness, World Soccer, Your Horse"
     },
     {
       "category": "Web CPM",
-      "type": "Mixed Standard Display Format",
-      "dimensions": "Multiple sizes",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Leaderboard 728 × 90; MPU 300 × 250; Double MPU 300 × 600; Billboard 970 × 250; Mobile Banner 320 × 50 px."
+      "name": "Mixed Standard Display Format",
+      "spec": "Please supply your creatives and the URL you would like them to link to using the dimensions below:\n\nLeaderboard: 728px W × 90px H\nMPU: 300px W × 250px H\nDouble MPU: 300px W × 600px\nBillboard: 970px × 250px\nMobile Banner: 320px W × 50px H\n\nPlease ensure that all banners are supplied using the following formats:\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Web CPM",
-      "type": "Fireplace Takeover",
-      "dimensions": "Bespoke",
-      "format": "Discuss with the team",
-      "maxFileSize": "—",
-      "details": "Creative specifications and requirements are tailored to the booking. Contact the team directly."
+      "name": "Fireplace Takeover",
+      "spec": "As this is a bespoke Fireplace Takeover, the creative specifications and requirements are tailored to the booking. Please get in touch with our team directly to discuss the required artwork and technical specifications.",
+      "note": ""
     },
     {
       "category": "Branded Content",
-      "type": "Advertorial",
-      "dimensions": "Brief-led",
-      "format": "3–5 high-resolution images",
-      "maxFileSize": "—",
-      "details": "Provide detailed company/product/service information (no word limit), 3–5 high-resolution images and relevant URL links."
+      "name": "Advertorial",
+      "spec": "To help our editorial team create your branded article, please provide the following:\n\nCompany or product information: Please provide a detailed brief about your company, product or service. There is no word limit, so the more information you can provide, the better.\n\nImages: Please supply 3–5 high-resolution images for our editorial team to use within the article.\n\nURL links: Please provide any website or relevant URL links you would like to be included within the article.",
+      "note": ""
     },
     {
       "category": "Branded Content",
-      "type": "Video",
-      "dimensions": "Bespoke",
-      "format": "Discuss with the team",
-      "maxFileSize": "—",
-      "details": "Creative specifications and requirements are tailored to the booking. Contact the team directly."
+      "name": "Video",
+      "spec": "As this is a bespoke video, the creative specifications and requirements are tailored to the booking. Please get in touch with our team directly to discuss the required artwork and technical specifications.",
+      "note": ""
     },
     {
       "category": "Enewsletter",
-      "type": "60/40",
-      "dimensions": "Copy + image + banner",
-      "format": "High-resolution image; banner web-optimised JPEG recommended",
-      "maxFileSize": "—",
-      "details": "80–120 words promotional copy; campaign brief; one high-resolution image; logo and click-through URL; test-recipient email list; baseline banner 300 × 600 px."
+      "name": "60/40",
+      "spec": "To help us prepare your enewsletter section, please provide the following:\n\nCopy: 80–120 words of promotional copy.\n\nCampaign brief: A brief overview of what you are looking to achieve with the placement, such as raising awareness of a specific offer, product or service.\n\nImage: One high-resolution image to accompany your copy.\n\nLogo & URL: Your company logo and the click-through URL you would like to use.\n\nTest recipients: A list of email addresses you would like us to include when sending the test email for approval.\n\nBaseline banner: One 300px H × 600px W banner. We recommend supplying this as a web-optimised JPEG.",
+      "note": ""
     },
     {
       "category": "Enewsletter",
-      "type": "Banner",
-      "dimensions": "600 × 300 px",
-      "format": "Web-optimised JPEG, PNG or GIF",
-      "maxFileSize": "150KB",
-      "details": "Supply the creative and destination URL."
+      "name": "Banner",
+      "spec": "Please supply your eNewsletter Banner creative and the URL you would like the advert to link to, using the specifications below:\n\nDimensions: 600px W × 300px H\nFormat: Web-optimised JPEG, PNG or GIF\nMaximum file size: 150KB",
+      "note": ""
     },
     {
       "category": "Social Media",
-      "type": "Social Amplification",
-      "dimensions": "Ideally 720 × 960 px",
-      "format": "Image + concise copy",
-      "maxFileSize": "—",
-      "details": "Provide one high-resolution image (ideally 720 × 960 px), concise copy, click-through URL, targeting requirements and social handle/tag."
+      "name": "Social Amplification",
+      "spec": "To help us prepare your sponsored social post, please provide the following:\n\nImage: One high-resolution image, ideally 720px W × 960px H.\n\nCopy: A short, concise piece of copy to accompany the image. We recommend using as few words as possible while clearly communicating your key message.\n\nClick-through URL: The URL you would like users to be directed to, such as an advertorial or product landing page.\n\nTargeting: Any specific audience or targeting requirements you would like us to consider.\n\nSocial tag: Your social media handle/tag so that we can tag your company or brand in the post.",
+      "note": ""
     }
   ],
   "pageSkinTitles": [
@@ -815,17 +663,17 @@
     "CPM",
     "Fast Car",
     "Fishing News",
-    "Men’s Fitness",
+    "Mens Fitness",
     "Platinum",
     "Profi",
     "Psychologies",
     "Sea Angler",
     "Stuff",
     "The Great Outdoors",
-    "Top Santé",
+    "Top Sante",
     "Trucking",
     "Vineyard Magazine",
-    "Women’s Fitness",
+    "Womens Fitness",
     "World Soccer",
     "Your Horse"
   ],
