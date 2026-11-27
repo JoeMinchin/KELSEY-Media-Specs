@@ -230,7 +230,7 @@
   function renderDevice(device,items,contentLabel){
    const isMobile=device==="mobile";
    const unit=p=>{
-    const width=/MPU|Mobile Banner/i.test(p.label)?100:(isMobile?Math.min(100,(p.w/320)*100):Math.min(100,(p.w/970)*100));
+    const width=/^MPU$/i.test(p.label)?100:/Double MPU/i.test(p.label)?(isMobile?82:65):/Mobile Banner/i.test(p.label)?100:(isMobile?Math.min(100,(p.w/320)*100):Math.min(100,(p.w/970)*100));
     return '<div class="placement-unit placement-'+p.label.toLowerCase().replace(/[^a-z]+/g,"-")+'" style="--placement-width:'+width+'%;--placement-ratio:'+p.w+'/'+p.h+'"><span class="placement-name">'+esc(p.label)+'</span><b>'+p.w+' × '+p.h+' px</b></div>';
    };
    const top=items.filter(p=>/Leaderboard|Billboard|Mobile Banner|Baseline banner|^Banner$/i.test(p.label));
