@@ -1,0 +1,839 @@
+{
+  "publications": [
+    {
+      "name": "220 Triathlon",
+      "trim": "200 x 270",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Agricultural Trader",
+      "trim": "265 x 310",
+      "printer": "Mortons",
+      "specsAvailable": false
+    },
+    {
+      "name": "Amateur Gardening",
+      "trim": "205 x 290",
+      "printer": "Walstead",
+      "specsAvailable": true
+    },
+    {
+      "name": "Amateur Photographer",
+      "trim": "200 x 270",
+      "printer": "Walstead",
+      "specsAvailable": true
+    },
+    {
+      "name": "Aston Martin",
+      "trim": "200 x 270",
+      "printer": "S&G",
+      "specsAvailable": true
+    },
+    {
+      "name": "Cage & Aviary Birds",
+      "trim": "265 x 320",
+      "printer": "Mortons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Canal Boat",
+      "trim": "205 x 290",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Car Mechanics",
+      "trim": "205 x 290",
+      "printer": "Walstead",
+      "specsAvailable": true
+    },
+    {
+      "name": "Car Mechanics Expert",
+      "trim": "200 x 270",
+      "printer": "S&G",
+      "specsAvailable": true
+    },
+    {
+      "name": "Classic & Vint Coms",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Classic Car Buyer",
+      "trim": "265 x 320",
+      "printer": "Mortons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Classic Ford",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Classic Jaguar",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Classic Massey",
+      "trim": "200 x 270",
+      "printer": "S&G",
+      "specsAvailable": true
+    },
+    {
+      "name": "Classic Mercedes",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Classic Truck",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Classics World",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Coast",
+      "trim": "205 x 290",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Country Smallholder",
+      "trim": "205 x 290",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Crop Production Mag",
+      "trim": "205 x 290",
+      "printer": "TBC",
+      "specsAvailable": true
+    },
+    {
+      "name": "Fishing News",
+      "trim": "265 x 311",
+      "printer": "Mortons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Ford & Fordson",
+      "trim": "200 x 270",
+      "printer": "S&G",
+      "specsAvailable": true
+    },
+    {
+      "name": "Holiday Living",
+      "trim": "200 x 270",
+      "printer": "S&G",
+      "specsAvailable": true
+    },
+    {
+      "name": "Jaguar World",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Match",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Men’s Fitness",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "MG Enthusiast",
+      "trim": "200 x 270",
+      "printer": "S&G",
+      "specsAvailable": true
+    },
+    {
+      "name": "Mini World",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Motorsport News",
+      "trim": "265 x 340",
+      "printer": "Mortons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Old Glory",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Park Home News",
+      "trim": "210 x 297",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Park Homes & Hol Liv",
+      "trim": "200 x 270",
+      "printer": "S&G",
+      "specsAvailable": true
+    },
+    {
+      "name": "Platinum",
+      "trim": "205 x 290",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Practical Pigs",
+      "trim": "200 x 270",
+      "printer": "S&G",
+      "specsAvailable": true
+    },
+    {
+      "name": "Professional Recovery",
+      "trim": "205 x 290",
+      "printer": "S&G",
+      "specsAvailable": true
+    },
+    {
+      "name": "Psychologies",
+      "trim": "200 x 270",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Rolls Royce & Bentley",
+      "trim": "200 x 270",
+      "printer": "S&G",
+      "specsAvailable": true
+    },
+    {
+      "name": "Sea Angler",
+      "trim": "205 x 290",
+      "printer": "Walstead",
+      "specsAvailable": true
+    },
+    {
+      "name": "Ships Monthly",
+      "trim": "200 x 270",
+      "printer": "Walstead",
+      "specsAvailable": true
+    },
+    {
+      "name": "Show Guides",
+      "trim": "200 x 270",
+      "printer": "S&G",
+      "specsAvailable": true
+    },
+    {
+      "name": "Stuff",
+      "trim": "200 x 270",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "The Christmas Mag",
+      "trim": "210 x 297",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "The Farmers Mart",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "The Great Outdoors",
+      "trim": "205 x 290",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Top Santé",
+      "trim": "200 x 270",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "This England",
+      "trim": "205 x 290",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Tractor & Machinery",
+      "trim": "210 x 297",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Trucking",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Ulitimate Music Guide",
+      "trim": "205 x 290",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Ultimate Record Coll",
+      "trim": "205 x 290",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Uncut",
+      "trim": "205 x 290",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Volks World",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "VWT",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "Women’s Fitness",
+      "trim": "200 x 270",
+      "printer": "Acorn",
+      "specsAvailable": true
+    },
+    {
+      "name": "World Soccer",
+      "trim": "200 x 270",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    },
+    {
+      "name": "Your Horse",
+      "trim": "205 x 290",
+      "printer": "Gibbons",
+      "specsAvailable": true
+    }
+  ],
+  "printSpecs": {
+    "210 x 297": {
+      "Full page": [
+        [
+          "Trim",
+          "210 × 297 mm"
+        ],
+        [
+          "Bleed",
+          "216 × 303 mm"
+        ],
+        [
+          "Type",
+          "190 × 277 mm"
+        ]
+      ],
+      "Half page horizontal": [
+        [
+          "Size",
+          "190 × 133 mm"
+        ]
+      ],
+      "Half page vertical": [
+        [
+          "Size",
+          "90 × 277 mm"
+        ]
+      ],
+      "Quarter page portrait": [
+        [
+          "Size",
+          "90 × 133 mm"
+        ]
+      ],
+      "Quarter page horizontal": [
+        [
+          "Size",
+          "190 × 63 mm"
+        ]
+      ],
+      "Eighth page": [
+        [
+          "Size",
+          "90 × 63 mm"
+        ]
+      ]
+    },
+    "205 x 290": {
+      "Full page": [
+        [
+          "Trim",
+          "205 × 290 mm"
+        ],
+        [
+          "Bleed",
+          "211 × 296 mm"
+        ],
+        [
+          "Type",
+          "185 × 270 mm"
+        ]
+      ],
+      "Half page horizontal": [
+        [
+          "Size",
+          "185 × 133 mm"
+        ]
+      ],
+      "Half page vertical": [
+        [
+          "Size",
+          "90.5 × 270 mm"
+        ]
+      ],
+      "Quarter page portrait": [
+        [
+          "Size",
+          "90.5 × 133 mm"
+        ]
+      ],
+      "Quarter page horizontal": [
+        [
+          "Size",
+          "185 × 64.5 mm"
+        ]
+      ],
+      "Eighth page": [
+        [
+          "Size",
+          "90.5 × 64.5 mm"
+        ]
+      ]
+    },
+    "200 x 270": {
+      "Full page": [
+        [
+          "Trim",
+          "200 × 270 mm"
+        ],
+        [
+          "Bleed",
+          "206 × 276 mm"
+        ],
+        [
+          "Type",
+          "180 × 250 mm"
+        ]
+      ],
+      "Half page horizontal": [
+        [
+          "Size",
+          "180 × 120 mm"
+        ]
+      ],
+      "Half page vertical": [
+        [
+          "Size",
+          "85 × 250 mm"
+        ]
+      ],
+      "Quarter page portrait": [
+        [
+          "Size",
+          "85 × 120 mm"
+        ]
+      ],
+      "Quarter page horizontal": [
+        [
+          "Size",
+          "180 × 55 mm"
+        ]
+      ],
+      "Eighth page": [
+        [
+          "Size",
+          "85 × 55 mm"
+        ]
+      ]
+    },
+    "265 x 320": {
+      "Full page": [
+        [
+          "Size",
+          "265 × 320 mm"
+        ]
+      ],
+      "Half page horizontal": [
+        [
+          "Size",
+          "265 × 157 mm"
+        ]
+      ],
+      "Half page vertical": [
+        [
+          "Size",
+          "129 × 320 mm"
+        ]
+      ],
+      "Quarter page portrait": [
+        [
+          "Size",
+          "129 × 157 mm"
+        ]
+      ],
+      "Eighth page": [
+        [
+          "Size",
+          "129 × 76 mm"
+        ]
+      ],
+      "Sixteenth page": [
+        [
+          "Size",
+          "63 × 76 mm"
+        ]
+      ],
+      "Thirty-second page": [
+        [
+          "Size",
+          "63 × 36 mm"
+        ]
+      ]
+    },
+    "265 x 311": {
+      "Full page": [
+        [
+          "Size",
+          "265 × 311 mm"
+        ]
+      ],
+      "Half page island": [
+        [
+          "Size",
+          "211 × 238.5 mm"
+        ]
+      ],
+      "Half page vertical": [
+        [
+          "Size",
+          "157 × 311 mm"
+        ]
+      ],
+      "Half page horizontal": [
+        [
+          "Size",
+          "265 × 156 mm"
+        ]
+      ],
+      "Quarter page vertical": [
+        [
+          "Size",
+          "157 × 182.5 mm"
+        ]
+      ],
+      "Quarter page horizontal": [
+        [
+          "Size",
+          "265 × 109 mm"
+        ]
+      ],
+      "Quarter page island": [
+        [
+          "Size",
+          "211 × 147 mm"
+        ]
+      ],
+      "Sixth page": [
+        [
+          "Size",
+          "103 × 182.5 mm"
+        ]
+      ],
+      "Eighth page vertical": [
+        [
+          "Size",
+          "103 × 147 mm"
+        ]
+      ],
+      "Eighth page horizontal": [
+        [
+          "Size",
+          "157 × 109 mm"
+        ]
+      ],
+      "Twelfth page vertical": [
+        [
+          "Size",
+          "103 × 109 mm"
+        ]
+      ]
+    },
+    "265 x 340": {
+      "Double page spread": [
+        [
+          "Size",
+          "550 × 340 mm"
+        ]
+      ],
+      "Full page": [
+        [
+          "Size",
+          "265 × 340 mm"
+        ]
+      ],
+      "Half page horizontal": [
+        [
+          "Size",
+          "265 × 165 mm"
+        ]
+      ],
+      "Half page vertical": [
+        [
+          "Size",
+          "127.5 × 340 mm"
+        ]
+      ],
+      "Quarter page portrait": [
+        [
+          "Size",
+          "127.5 × 165 mm"
+        ]
+      ],
+      "Quarter page horizontal": [
+        [
+          "Size",
+          "265 × 77.5 mm"
+        ]
+      ],
+      "Eighth page horizontal": [
+        [
+          "Size",
+          "127.5 × 77.5 mm"
+        ]
+      ],
+      "Eighth page vertical": [
+        [
+          "Size",
+          "58.75 × 165 mm"
+        ]
+      ],
+      "Sixteenth page": [
+        [
+          "Size",
+          "58.75 × 77.5 mm"
+        ]
+      ]
+    }
+  },
+  "digitalSpecs": [
+    {
+      "category": "Web Sponsorship",
+      "type": "Leaderboard",
+      "dimensions": "728 × 90 px",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply the creative and destination URL."
+    },
+    {
+      "category": "Web Sponsorship",
+      "type": "MPU",
+      "dimensions": "300 × 250 px",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply the creative and destination URL."
+    },
+    {
+      "category": "Web Sponsorship",
+      "type": "Double MPU",
+      "dimensions": "300 × 600 px",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply the creative and destination URL."
+    },
+    {
+      "category": "Web Sponsorship",
+      "type": "Billboard",
+      "dimensions": "970 × 250 px",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply the creative and destination URL."
+    },
+    {
+      "category": "Web Sponsorship",
+      "type": "Mobile Banner",
+      "dimensions": "320 × 50 px",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply the creative and destination URL."
+    },
+    {
+      "category": "Web Sponsorship",
+      "type": "Page Takeover",
+      "dimensions": "Multiple sizes",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Leaderboard 728 × 90; MPU 300 × 250; Double MPU 300 × 600; Billboard 970 × 250; Mobile Banner 320 × 50; Page Skin left and right 115 × 800 px. Page skins only valid for selected titles (see notes)."
+    },
+    {
+      "category": "Web Sponsorship",
+      "type": "Fireplace Takeover",
+      "dimensions": "Bespoke",
+      "format": "Discuss with the team",
+      "maxFileSize": "—",
+      "details": "Creative specifications and requirements are tailored to the booking. Contact the team directly."
+    },
+    {
+      "category": "Web CPM",
+      "type": "Leaderboard",
+      "dimensions": "728 × 90 px",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply the creative and destination URL."
+    },
+    {
+      "category": "Web CPM",
+      "type": "MPU",
+      "dimensions": "300 × 250 px",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply the creative and destination URL."
+    },
+    {
+      "category": "Web CPM",
+      "type": "Double MPU",
+      "dimensions": "300 × 600 px",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply the creative and destination URL."
+    },
+    {
+      "category": "Web CPM",
+      "type": "Billboard",
+      "dimensions": "970 × 250 px",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply the creative and destination URL."
+    },
+    {
+      "category": "Web CPM",
+      "type": "Mobile Banner",
+      "dimensions": "320 × 50 px",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply the creative and destination URL."
+    },
+    {
+      "category": "Web CPM",
+      "type": "Page Skin",
+      "dimensions": "115 × 800 px each",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply two separate image files (left and right) and the destination URL. Page skins only valid for selected titles (see notes)."
+    },
+    {
+      "category": "Web CPM",
+      "type": "Mixed Standard Display Format",
+      "dimensions": "Multiple sizes",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Leaderboard 728 × 90; MPU 300 × 250; Double MPU 300 × 600; Billboard 970 × 250; Mobile Banner 320 × 50 px."
+    },
+    {
+      "category": "Web CPM",
+      "type": "Fireplace Takeover",
+      "dimensions": "Bespoke",
+      "format": "Discuss with the team",
+      "maxFileSize": "—",
+      "details": "Creative specifications and requirements are tailored to the booking. Contact the team directly."
+    },
+    {
+      "category": "Branded Content",
+      "type": "Advertorial",
+      "dimensions": "Brief-led",
+      "format": "3–5 high-resolution images",
+      "maxFileSize": "—",
+      "details": "Provide detailed company/product/service information (no word limit), 3–5 high-resolution images and relevant URL links."
+    },
+    {
+      "category": "Branded Content",
+      "type": "Video",
+      "dimensions": "Bespoke",
+      "format": "Discuss with the team",
+      "maxFileSize": "—",
+      "details": "Creative specifications and requirements are tailored to the booking. Contact the team directly."
+    },
+    {
+      "category": "Enewsletter",
+      "type": "60/40",
+      "dimensions": "Copy + image + banner",
+      "format": "High-resolution image; banner web-optimised JPEG recommended",
+      "maxFileSize": "—",
+      "details": "80–120 words promotional copy; campaign brief; one high-resolution image; logo and click-through URL; test-recipient email list; baseline banner 300 × 600 px."
+    },
+    {
+      "category": "Enewsletter",
+      "type": "Banner",
+      "dimensions": "600 × 300 px",
+      "format": "Web-optimised JPEG, PNG or GIF",
+      "maxFileSize": "150KB",
+      "details": "Supply the creative and destination URL."
+    },
+    {
+      "category": "Social Media",
+      "type": "Social Amplification",
+      "dimensions": "Ideally 720 × 960 px",
+      "format": "Image + concise copy",
+      "maxFileSize": "—",
+      "details": "Provide one high-resolution image (ideally 720 × 960 px), concise copy, click-through URL, targeting requirements and social handle/tag."
+    }
+  ],
+  "pageSkinTitles": [
+    "220 Triathlon",
+    "Amateur Photographer",
+    "Classics World",
+    "Coast",
+    "CPM",
+    "Fast Car",
+    "Fishing News",
+    "Men’s Fitness",
+    "Platinum",
+    "Profi",
+    "Psychologies",
+    "Sea Angler",
+    "Stuff",
+    "The Great Outdoors",
+    "Top Santé",
+    "Trucking",
+    "Vineyard Magazine",
+    "Women’s Fitness",
+    "World Soccer",
+    "Your Horse"
+  ],
+  "sourceNotes": [
+    "Print dimensions and printer information are transcribed from ALL SPECS_2026.pdf (one page).",
+    "Digital requirements are transcribed from Digital Specs.xlsx.",
+    "Agricultural Trader is listed as 265 × 310 mm in the publication list, but the supplied PDF does not include a matching advert-format panel for that trim size. Confirm dimensions with Production before artwork is prepared.",
+    "Crop Production Mag is listed with printer TBC in the supplied PDF.",
+    "Publication and page-skin eligibility lists retain the source wording; verify with Production if a title name or eligibility has changed."
+  ]
+}
