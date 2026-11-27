@@ -66,11 +66,11 @@
   return '<div class="format-grid">'+Object.entries(specs).map(([name,vals])=>{
    const get=key=>vals.find(v=>v[0].toLowerCase()===key.toLowerCase())?.[1]||"";
    const size=get("Size")||get("Trim")||get("Bleed")||"";
-   const nums=size.match(/[\\d.]+/g)||[],w=Number(nums[0])||tw,h=Number(nums[1])||th;
+   const nums=size.match(/[\d.]+/g)||[],w=Number(nums[0])||tw,h=Number(nums[1])||th;
    const isSpread=/double page|spread/i.test(name)||w>tw*1.35;
    const pageW=isSpread?100:Math.min(100,w/tw*100),pageH=Math.min(100,h/th*100);
    const type=get("Type")||get("Type area")||"";
-   const safeNums=type.match(/[\\d.]+/g)||[];
+   const safeNums=type.match(/[\d.]+/g)||[];
    const safeW=safeNums.length>1?Math.min(100,Number(safeNums[0])/(isSpread?tw*2:tw)*100):0;
    const safeH=safeNums.length>1?Math.min(100,Number(safeNums[1])/th*100):0;
    const page='<div class="clean-print-page '+(isSpread?'spread':'')+'" style="aspect-ratio:'+(isSpread?'2*'+tw+'/'+th:tw+'/'+th)+'"><div class="clean-ad-block" style="width:'+pageW+'%;height:'+pageH+'%"></div>'+(safeW&&safeH?'<div class="clean-safe-area" style="width:'+safeW+'%;height:'+safeH+'%"></div>':'')+'</div>';
@@ -78,7 +78,7 @@
   }).join("")+'</div>';
  }
  function digitalPreview(item){
-  const m=item.spec.match(/Dimensions?\\s*:\\s*(\\d+)\\s*px?\\s*[Ww×x]\\s*(\\d+)\\s*px?/i)||item.spec.match(/(\\d+)\\s*[×x]\\s*(\\d+)\\s*px/i);
+  const m=item.spec.match(/Dimensions?\s*:\s*(\d+)\s*px?\s*[Ww×x]\s*(\d+)\s*px?/i)||item.spec.match(/(\d+)\s*[×x]\s*(\d+)\s*px/i);
   const w=m?+m[1]:0,h=m?+m[2]:0;
   const name=item.name.toLowerCase(),cat=item.category.toLowerCase();
   let device="desktop";
