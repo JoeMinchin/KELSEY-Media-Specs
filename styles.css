@@ -760,3 +760,7 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
 #digitalPage .placement-mobile-banner{width:100%}
 #digitalPage .desktop-skins .placement-unit{width:9px;height:100%;aspect-ratio:auto}
 #digitalPage .device-stage-both{flex-wrap:wrap}
+
+
+/* Publication trim label: use dark green text on the pale green accordion row */
+#printPage .accordion-trigger .item-meta{color:#173d22!important;font-weight:700!important}
