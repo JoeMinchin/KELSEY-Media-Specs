@@ -542,3 +542,22 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
 @media(max-width:650px){
  #printPage{min-height:calc(100vh - 65px);padding:32px 14px 50px}
 }
+
+/* Landing-page palette: print uses Kelsey green; digital uses deep forest green */
+#printPage{background:#a5d8b0!important}
+#digitalPage{background:#1b2b21!important;color:#fff}
+#digitalPage .page-intro h1,#digitalPage .page-intro p,#digitalPage .page-intro .eyebrow{color:#fff}
+#digitalPage .accordion-list{border-color:#ffffff35}
+#digitalPage .accordion-item{background:#263a2c;border-color:#ffffff30}
+#digitalPage .accordion-trigger{background:#263a2c;color:#fff}
+#digitalPage .accordion-trigger:hover,#digitalPage .accordion-trigger[aria-expanded=true]{background:#304a37;color:#fff}
+#digitalPage .accordion-trigger .plus,#digitalPage .accordion-trigger .item-meta,#digitalPage .category-count{color:#c6e4cc}
+#digitalPage .accordion-content{background:#304a37;color:#fff;border-top:1px solid #ffffff25}
+#digitalPage .digital-format{background:#263a2c;border-color:#58745e}
+#digitalPage .digital-format .accordion-trigger{background:#263a2c;color:#fff}
+#digitalPage .digital-format .accordion-trigger:hover,#digitalPage .digital-format .accordion-trigger[aria-expanded=true]{background:#3a5941}
+#digitalPage .digital-copy,#digitalPage .digital-copy p,#digitalPage .digital-copy li{color:#edf5ee}
+#digitalPage .digital-copy strong{color:#fff}
+#digitalPage .page-skin-note{background:#304a37;border:1px solid #58745e;color:#fff}
+#digitalPage .page-skin-note strong,#digitalPage .page-skin-note p{color:#fff}
+@media(max-width:650px){#digitalPage{min-height:calc(100vh - 65px);padding:32px 14px 50px}}
