@@ -487,3 +487,58 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
 .ks-dim-table tbody tr.is-highlighted{background:inherit;box-shadow:none}
 @media(max-width:800px){.ks-format-layout{grid-template-columns:1fr}.ks-format-side-detail{position:static;min-height:0}.ks-format-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:420px){.ks-format-card-grid{grid-template-columns:1fr 1fr}.ks-format-group{padding:16px 12px}}
+
+/* Full-viewport Kelsey green print specification experience */
+#printPage{
+ width:100%;
+ max-width:none;
+ min-height:calc(100vh - 76px);
+ margin:0;
+ padding:48px clamp(20px,5vw,76px) 72px;
+ background:#a5d8b0;
+ color:#fff;
+}
+#printPage .page-intro h1,
+#printPage .page-intro p,
+#printPage .page-intro .eyebrow{color:#fff}
+#printPage .page-intro p{opacity:.92}
+#printPage .search{background:#f3faf4;border:1px solid #d8eddd}
+#printPage .search>span{color:#397448}
+#printPage .search input{color:#203d28}
+#printPage .search input::placeholder{color:#718b76}
+#printPage .search kbd{color:#6d8a72}
+#printPage .list-heading{color:#fff}
+#printPage .accordion-list{border-top:1px solid #ffffff70}
+#printPage .accordion-item{background:#8bc99a;border-color:#ffffff65}
+#printPage .accordion-trigger{background:#8bc99a;color:#fff}
+#printPage .accordion-trigger:hover,
+#printPage .accordion-trigger[aria-expanded=true]{background:#78bd89;color:#fff}
+#printPage .accordion-trigger .plus,
+#printPage .accordion-trigger .item-meta{color:#fff}
+#printPage .accordion-content{background:#eaf6ec;color:#24492d;border-top:1px solid #d2e9d6}
+#printPage .ks-print-spec{background:#eaf6ec;border:1px solid #d2e9d6;box-shadow:0 12px 32px #285c3420}
+#printPage .ks-format-group{background:#e1f1e4;border-color:#c7e3cc}
+#printPage .ks-format-group .ks-group-heading h3,
+#printPage .ks-format-group .ks-group-heading p,
+#printPage .ks-format-group .ks-kicker,
+#printPage .ks-page-size{color:#315c39}
+#printPage .ks-format-card{background:#f8fcf8;border-color:#c4dfc9;color:#294e32}
+#printPage .ks-format-card strong{color:#294e32}
+#printPage .ks-format-card:hover,
+#printPage .ks-format-card.is-active{background:#cce8d1;border-color:#5ca86d;box-shadow:0 0 0 3px #5ca86d30}
+#printPage .ks-format-side-detail{background:#cce8d1;border-color:#b4d9bb;color:#24492d}
+#printPage .ks-side-kicker{color:#4c8658}
+#printPage .ks-side-title{color:#24492d}
+#printPage .ks-side-measurements div{border-color:#b4d9bb}
+#printPage .ks-side-measurements span{color:#54795b}
+#printPage .ks-side-measurements b{color:#24492d}
+#printPage .ks-side-copy{color:#496c50}
+#printPage .ks-source-table{background:#eaf6ec;color:#294e32}
+#printPage .ks-source-table h3{color:#315c39}
+#printPage .ks-dim-table{color:#294e32}
+#printPage .ks-dim-table thead{background:#d2ead6;color:#24492d}
+#printPage .ks-dim-table tbody tr:nth-child(even){background:#f4faf5}
+#printPage .ks-table-note{color:#55775b}
+@media(max-width:650px){
+ #printPage{min-height:calc(100vh - 65px);padding:32px 14px 50px}
+}
