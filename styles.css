@@ -139,3 +139,27 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
 .clean-format-card .format-details span{font-size:12px}
 .clean-format-card .client-note{display:block;margin-top:9px}
 @media(max-width:650px){.clean-preview-wrap{min-height:160px}.clean-print-page{width:94px;min-height:122px}.clean-print-page.spread{width:188px}}
+
+/* Landing-page digital artwork: four device mockups, grouped as one visual */
+.digital-art.landing-devices{width:clamp(280px,38vw,490px);height:clamp(190px,24vw,285px);top:46%;transform:translate(-50%,-50%)}
+.landing-device{position:absolute;display:block;box-sizing:border-box}
+.landing-device .landing-screen{display:block;position:absolute;inset:0;background:#f8fbf8;border:5px solid #a5d8b0;overflow:hidden}
+.landing-screen-bar{display:block;height:12px;background:#dcebe0;border-bottom:1px solid #a5d8b0}
+.landing-screen-content{display:block;position:absolute;left:9%;right:9%;top:27%;height:45%;background:#a5d8b0;border:1px solid #79b989}
+.landing-desktop{left:0;top:8px;width:220px;height:142px;background:transparent}
+.landing-desktop .landing-screen{border-radius:5px 5px 2px 2px;box-shadow:0 12px 24px #0003}
+.landing-monitor-stand{position:absolute;left:45%;bottom:-22px;width:10%;height:22px;background:#a5d8b0}
+.landing-monitor-stand:after{content:"";position:absolute;bottom:0;left:-110%;width:320%;height:5px;background:#a5d8b0;border-radius:4px}
+.landing-laptop{left:115px;bottom:5px;width:190px;height:122px;background:transparent}
+.landing-laptop .landing-screen{border-radius:6px 6px 2px 2px;border-width:5px;box-shadow:0 10px 20px #0003}
+.landing-laptop-base{position:absolute;left:-5%;bottom:-8px;width:110%;height:8px;background:#b8c8bc;clip-path:polygon(4% 0,96% 0,100% 100%,0 100%)}
+.landing-tablet{right:30px;top:24px;width:110px;height:150px;border:5px solid #a5d8b0;border-radius:12px;background:#f8fbf8;box-shadow:0 12px 24px #0003}
+.landing-tablet .landing-screen{inset:5px;border:0}
+.landing-tablet .landing-screen-content{top:32%;height:38%}
+.landing-mobile{right:0;bottom:0;width:65px;height:128px;border:5px solid #a5d8b0;border-radius:13px;background:#f8fbf8;box-shadow:0 12px 24px #0004}
+.landing-mobile .landing-screen{inset:4px;border:0;border-radius:7px}
+.landing-mobile .landing-screen:before{content:"";position:absolute;top:3px;left:50%;transform:translateX(-50%);width:18px;height:3px;border-radius:3px;background:#28452f;z-index:1}
+.landing-mobile .landing-screen-content{top:30%;height:22%}
+@media(max-width:650px){
+ .digital-art.landing-devices{width:275px;height:175px;top:43%;transform:translate(-50%,-50%) scale(.72)}
+}
