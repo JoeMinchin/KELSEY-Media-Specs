@@ -448,3 +448,11 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
 .ks-format-card:hover,.ks-format-card.is-active{background:#e5f4e8;border-color:#80bd8b}
 .ks-dim-table tbody tr.is-highlighted{background:#dff1e2!important;box-shadow:inset 4px 0 #65b879}
 .ks-dim-table tbody tr.is-highlighted th,.ks-dim-table tbody tr.is-highlighted td{color:#244b2e;font-weight:700}
+
+/* DPS spread: outside bleed only; the centre spine/gutter is not bleed */
+.ks-mini-bleed-spread{padding:3px 3px 3px 3px!important;background:#e6f4e8;border:1px dashed #69a878;box-sizing:content-box}
+.ks-mini-bleed-spread .ks-mini-spread{width:116px;max-height:100px;overflow:visible}
+.ks-mini-spread .ks-mini-ad{left:0;top:0;width:100%;height:100%;background:#a5d8b0}
+.ks-mini-spread .ks-mini-gutter{left:50%;border-left:1px solid #31553a;border-right:1px solid #31553a;width:0}
+.ks-dps-group .ks-format-card-grid{grid-template-columns:minmax(210px,280px)}
+.ks-dps-group .ks-mini-caption{max-width:170px;text-align:center;line-height:1.35}
