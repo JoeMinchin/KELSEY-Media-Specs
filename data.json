@@ -270,6 +270,16 @@
           "Size",
           "90 × 63 mm"
         ]
+      ],
+      "Double page spread": [
+        [
+          "Size",
+          "440 × 297 mm"
+        ],
+        [
+          "Basis",
+          "Provisional estimate: two page widths plus 20 mm spread allowance; confirm with Production"
+        ]
       ]
     },
     "205 x 290": {
@@ -315,6 +325,16 @@
         [
           "Size",
           "90.5 × 64.5 mm"
+        ]
+      ],
+      "Double page spread": [
+        [
+          "Size",
+          "430 × 290 mm"
+        ],
+        [
+          "Basis",
+          "Provisional estimate: two page widths plus 20 mm spread allowance; confirm with Production"
         ]
       ]
     },
@@ -362,6 +382,16 @@
           "Size",
           "85 × 55 mm"
         ]
+      ],
+      "Double page spread": [
+        [
+          "Size",
+          "420 × 270 mm"
+        ],
+        [
+          "Basis",
+          "Provisional estimate: two page widths plus 20 mm spread allowance; confirm with Production"
+        ]
       ]
     },
     "265 x 320": {
@@ -405,6 +435,26 @@
         [
           "Size",
           "63 × 36 mm"
+        ]
+      ],
+      "Double page spread": [
+        [
+          "Size",
+          "550 × 320 mm"
+        ],
+        [
+          "Basis",
+          "Provisional estimate: two page widths plus 20 mm spread allowance; confirm with Production"
+        ]
+      ],
+      "Quarter page horizontal": [
+        [
+          "Size",
+          "265 × 76 mm"
+        ],
+        [
+          "Basis",
+          "Provisional estimate based on full page width and quarter-height placement; confirm with Production"
         ]
       ]
     },
@@ -474,6 +524,16 @@
           "Size",
           "103 × 109 mm"
         ]
+      ],
+      "Double page spread": [
+        [
+          "Size",
+          "550 × 311 mm"
+        ],
+        [
+          "Basis",
+          "Provisional estimate: two page widths plus 20 mm spread allowance; confirm with Production"
+        ]
       ]
     },
     "265 x 340": {
@@ -529,6 +589,74 @@
         [
           "Size",
           "58.75 × 77.5 mm"
+        ]
+      ]
+    },
+    "265 x 310": {
+      "Full page": [
+        [
+          "Size",
+          "265 × 311 mm"
+        ]
+      ],
+      "Half page island": [
+        [
+          "Size",
+          "211 × 238.5 mm"
+        ]
+      ],
+      "Half page vertical": [
+        [
+          "Size",
+          "157 × 311 mm"
+        ]
+      ],
+      "Half page horizontal": [
+        [
+          "Size",
+          "265 × 156 mm"
+        ]
+      ],
+      "Quarter page vertical": [
+        [
+          "Size",
+          "157 × 182.5 mm"
+        ]
+      ],
+      "Quarter page horizontal": [
+        [
+          "Size",
+          "265 × 109 mm"
+        ]
+      ],
+      "Quarter page island": [
+        [
+          "Size",
+          "211 × 147 mm"
+        ]
+      ],
+      "Sixth page": [
+        [
+          "Size",
+          "103 × 182.5 mm"
+        ]
+      ],
+      "Eighth page vertical": [
+        [
+          "Size",
+          "103 × 147 mm"
+        ]
+      ],
+      "Eighth page horizontal": [
+        [
+          "Size",
+          "157 × 109 mm"
+        ]
+      ],
+      "Twelfth page vertical": [
+        [
+          "Size",
+          "103 × 109 mm"
         ]
       ]
     }
