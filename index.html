@@ -6,7 +6,7 @@
 <title>Kelsey Media | Artwork Specifications</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=32">
+<link rel="stylesheet" href="./styles.css?v=33">
 </head>
 <body>
 <header class="header">
@@ -217,7 +217,8 @@
   if(responsiveContent){
    const title=item.name==="60/40"?"Email content + 600 × 300 px banner":"Branded article layout";
    const devices=["desktop","mobile"];
-   return '<div class="digital-preview-area device-stage device-stage-both">'+devices.map(device=>renderDevice(device,[],title)).join("")+'<span class="preview-caption">RESPONSIVE CONTENT · DESKTOP + MOBILE</span></div>';
+   const emailBanner=item.name==="60/40"?[{label:"Baseline banner",w:600,h:300,devices}]:[];
+   return '<div class="digital-preview-area device-stage device-stage-both">'+devices.map(device=>renderDevice(device,emailBanner,title)).join("")+'<span class="preview-caption">RESPONSIVE CONTENT · DESKTOP + MOBILE</span></div>';
   }
   const devices=[...new Set(placements.flatMap(p=>p.devices))];
   if(!devices.length){
@@ -229,10 +230,10 @@
   function renderDevice(device,items,contentLabel){
    const isMobile=device==="mobile";
    const unit=p=>{
-    const width=isMobile?Math.min(100,(p.w/320)*100):Math.min(100,(p.w/970)*100);
+    const width=/MPU|Mobile Banner/i.test(p.label)?100:(isMobile?Math.min(100,(p.w/320)*100):Math.min(100,(p.w/970)*100));
     return '<div class="placement-unit placement-'+p.label.toLowerCase().replace(/[^a-z]+/g,"-")+'" style="--placement-width:'+width+'%;--placement-ratio:'+p.w+'/'+p.h+'"><span class="placement-name">'+esc(p.label)+'</span><b>'+p.w+' × '+p.h+' px</b></div>';
    };
-   const top=items.filter(p=>/Leaderboard|Billboard|Mobile Banner/i.test(p.label));
+   const top=items.filter(p=>/Leaderboard|Billboard|Mobile Banner|Baseline banner/i.test(p.label));
    const side=items.filter(p=>/^(MPU|Double MPU)$/i.test(p.label));
    const skins=items.filter(p=>/Page Skin/i.test(p.label));
    const topAds=top.map(unit).join("");
