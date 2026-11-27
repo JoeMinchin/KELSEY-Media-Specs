@@ -6,7 +6,7 @@
 <title>Kelsey Media | Artwork Specifications</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=11">
+<link rel="stylesheet" href="./styles.css?v=16">
 </head>
 <body>
 <header class="header">
@@ -60,9 +60,20 @@
   $("landing").hidden=v!=="home";$("printPage").hidden=v!=="print";$("digitalPage").hidden=v!=="digital";
   $("backButton").hidden=v==="home";document.body.classList.toggle("spec-open",v!=="home");window.scrollTo(0,0);
  }
+ // Record each internal page change so the browser Back button returns to the previous view.
+ if(!history.state||!history.state.kelseyView)history.replaceState({kelseyView:"home"},"",location.pathname+location.search);
+ function navigate(v){
+  if(v===history.state?.kelseyView){view(v);return;}
+  history.pushState({kelseyView:v},"",location.pathname+location.search);
+  view(v);
+ }
+ window.addEventListener("popstate",e=>view(e.state?.kelseyView||"home"));
  document.addEventListener("click",e=>{
   const c=e.target.closest(".choice[data-view]"),b=e.target.closest("#backButton"),h=e.target.closest("[data-home]");
-  if(c){e.preventDefault();view(c.dataset.view)}else if(b||h){e.preventDefault();view("home")}
+  if(c){e.preventDefault();navigate(c.dataset.view)}else if(b){
+   e.preventDefault();
+   if(history.state?.kelseyView&&history.state.kelseyView!=="home")history.back();else navigate("home");
+  }else if(h){e.preventDefault();navigate("home")}
   const t=e.target.closest(".accordion-trigger");
   if(t){const open=t.getAttribute("aria-expanded")==="true";t.setAttribute("aria-expanded",String(!open));const panel=$(t.getAttribute("aria-controls"));if(panel)panel.hidden=open;}
  });
