@@ -79,10 +79,10 @@
  });
  function printCards(specs,trim){
   const mm=value=>{
-   const m=String(value||"").match(/([\\d.]+)\\s*[×x]\\s*([\\d.]+)/i);
+   const m=String(value||"").match(/([\d.]+)\s*[×x]\s*([\d.]+)/i);
    return m?{w:Number(m[1]),h:Number(m[2])}:null;
   };
-  const [tw,th]=trim.split(/\\s*x\\s*/i).map(Number);
+  const [tw,th]=trim.split(/\s*x\s*/i).map(Number);
   return '<div class="print-format-list">'+Object.entries(specs).map(([name,vals])=>{
    const get=key=>vals.find(v=>v[0].toLowerCase()===key.toLowerCase())?.[1]||"";
    const isSpread=/double page|spread/i.test(name);
