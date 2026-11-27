@@ -561,3 +561,16 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
 #digitalPage .page-skin-note{background:#304a37;border:1px solid #58745e;color:#fff}
 #digitalPage .page-skin-note strong,#digitalPage .page-skin-note p{color:#fff}
 @media(max-width:650px){#digitalPage{min-height:calc(100vh - 65px);padding:32px 14px 50px}}
+
+/* Add clear breathing room below the fixed-height header on spec pages */
+#printPage,#digitalPage{
+ padding-top:clamp(76px,8vw,112px)!important;
+}
+#printPage .page-intro,#digitalPage .page-intro{
+ margin-top:12px;
+ margin-bottom:32px;
+}
+@media(max-width:650px){
+ #printPage,#digitalPage{padding-top:68px!important}
+ #printPage .page-intro,#digitalPage .page-intro{margin-top:8px;margin-bottom:25px}
+}
