@@ -17,13 +17,13 @@
  <section class="landing" id="landing">
   <div class="landing-heading"><div class="eyebrow">KELSEY MEDIA · PRODUCTION</div><h1>Artwork specifications</h1><p>Select the type of advertising artwork you need.</p></div>
   <div class="split">
-   <button class="choice print-choice" data-view="print" type="button">
+   <button class="choice print-choice" data-view="print" type="button" onclick="window.kelseyNavigate('print')">
     <span class="choice-kicker">01 / ADVERTISING</span>
     <span class="print-art" aria-hidden="true"><i></i><b></b><em></em></span>
     <span class="choice-title">PRINT SPECS</span><span class="choice-desc">Publication sizes, advert formats and print requirements.</span>
     <span class="choice-action">VIEW PRINT SPECIFICATIONS <b>↗</b></span>
    </button>
-   <button class="choice digital-choice" data-view="digital" type="button">
+   <button class="choice digital-choice" data-view="digital" type="button" onclick="window.kelseyNavigate('digital')">
     <span class="choice-kicker">02 / ADVERTISING</span>
     <span class="digital-art landing-devices" aria-hidden="true">
  <i class="landing-device landing-desktop"><span class="landing-screen"><span class="landing-screen-bar"></span><span class="landing-screen-content"></span></span><span class="landing-monitor-stand"></span></i>
@@ -67,6 +67,7 @@
   history.pushState({kelseyView:v},"",location.pathname+location.search);
   view(v);
  }
+ window.kelseyNavigate=navigate;
  window.addEventListener("popstate",e=>view(e.state?.kelseyView||"home"));
  document.addEventListener("click",e=>{
   const c=e.target.closest(".choice[data-view]"),b=e.target.closest("#backButton"),h=e.target.closest("[data-home]");
