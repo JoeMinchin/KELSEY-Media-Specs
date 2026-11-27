@@ -6,7 +6,7 @@
 <title>Kelsey Media | Artwork Specifications</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=21">
+<link rel="stylesheet" href="./styles.css?v=22">
 </head>
 <body>
 <header class="header">
@@ -122,18 +122,24 @@
    const base=isDps?{w:550,h:page.h}:page;
    const size=e.size||base;
    const w=Math.min(100,size.w/base.w*100),h=Math.min(100,size.h/base.h*100);
+   // Keep advert artwork inside the page with a visible margin, matching real magazine layouts.
+   const margin=5;
    let x=(100-w)/2,y=(100-h)/2;
-   if(code==="FP"||isDps){x=0;y=0}
-   else if(code==="HPH"){x=0;y=100-h}
-   else if(code==="HPV"){x=0;y=0}
-   else if(code==="QPH"){x=0;y=100-h}
-   else if(code==="QPV"){x=100-w;y=0}
-   else if(code==="EP"||code==="EPV"){x=100-w;y=100-h}
+   if(code==="FP"){x=0;y=0}
+   else if(isDps){x=0;y=0}
+   else if(code==="HPH"){x=(100-w)/2;y=100-h-margin}
+   else if(code==="HPV"){x=margin;y=(100-h)/2}
+   else if(code==="QPH"){x=margin;y=100-h-margin}
+   else if(code==="QPV"){x=100-w-margin;y=margin}
+   else if(code==="EP"||code==="EPV"){x=100-w-margin;y=100-h-margin}
+   else if(code==="HPI"||code==="QPI"){x=(100-w)/2;y=(100-h)/2}
    const outer=e.get("Bleed"),trimSize=e.get("Trim");
-   const bleed=!!outer;
+   // DPS bleed is shown as a provisional visual guide only; no DPS bleed size is supplied in the source.
+   const bleed=!!outer||isDps;
    const pageClass=isDps?"ks-mini-spread":"ks-mini-page";
    const pageHtml='<div class="'+pageClass+'" style="aspect-ratio:'+base.w+'/'+base.h+';--ad-x:'+x+'%;--ad-y:'+y+'%;--ad-w:'+w+'%;--ad-h:'+h+'%"><span class="ks-mini-ad '+(code==="FP"||isDps?"is-full":"")+'"></span>'+(isDps?'<i class="ks-mini-gutter"></i>':"")+'</div>';
-   return '<div class="ks-card-preview '+(bleed?'has-bleed':'')+'">'+(bleed?'<div class="ks-mini-bleed" style="aspect-ratio:'+page.w+'/'+page.h+'">'+pageHtml+'</div>':pageHtml)+'<span class="ks-mini-caption">'+(isDps?"TWO-PAGE SPREAD":"PAGE PLACEMENT")+'</span></div>';
+   const bleedFrame=isDps?'<div class="ks-mini-bleed ks-mini-bleed-spread" style="aspect-ratio:556/346">'+pageHtml+'</div>':(bleed?'<div class="ks-mini-bleed" style="aspect-ratio:'+page.w+'/'+page.h+'">'+pageHtml+'</div>':pageHtml);
+   return '<div class="ks-card-preview '+(bleed?'has-bleed':'')+'">'+bleedFrame+'<span class="ks-mini-caption">'+(isDps?"DPS · 550 × 340 mm · provisional bleed guide":bleed?"BLEED · TRIM · PAGE PLACEMENT":"PAGE PLACEMENT")+'</span></div>';
   };
   const cards=list=>list.map(e=>{
    const code=codeFor(e.name);
