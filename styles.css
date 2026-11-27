@@ -734,3 +734,29 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
 #digitalPage .placement-billboard,#digitalPage .placement-leaderboard,#digitalPage .placement-double-mpu{max-height:none!important}
 #digitalPage .desktop-top-ads{max-height:none;overflow:visible}
 #digitalPage .mobile-top-ads,#digitalPage .mobile-in-content-ads{overflow:visible}
+
+
+/* Readable advert-size column: dark green figures on a light green field */
+#printPage .ks-dim-table tbody td:nth-child(2),
+#printPage .ks-dim-table tbody tr:nth-child(even) td:nth-child(2),
+#printPage .ks-dim-table tbody tr:hover td:nth-child(2),
+#printPage .ks-dim-table tbody tr.is-highlighted td:nth-child(2){
+  background:#e4f1e6!important;
+  color:#173d22!important;
+  font-weight:800;
+}
+#printPage .ks-dim-table thead th:nth-child(2){background:#244b2d!important;color:#fff!important}
+
+/* Device previews use only the device classes supported by the supplied format */
+#digitalPage .device-stage{align-items:center;justify-content:center;gap:18px}
+#digitalPage .device-preview{flex:0 1 auto}
+#digitalPage .device-preview-desktop{width:min(100%,330px)}
+#digitalPage .device-preview-mobile{width:92px;flex:0 0 92px}
+#digitalPage .placement-unit{box-sizing:border-box;max-width:100%;height:auto;min-height:0;aspect-ratio:var(--placement-ratio);}
+#digitalPage .placement-leaderboard{width:min(100%,100%)}
+#digitalPage .placement-billboard{width:100%}
+#digitalPage .placement-mpu{width:100%}
+#digitalPage .placement-double-mpu{width:70%}
+#digitalPage .placement-mobile-banner{width:100%}
+#digitalPage .desktop-skins .placement-unit{width:9px;height:100%;aspect-ratio:auto}
+#digitalPage .device-stage-both{flex-wrap:wrap}
