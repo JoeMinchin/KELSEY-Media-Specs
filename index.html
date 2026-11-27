@@ -11,19 +11,19 @@
 <body>
 <header class="header">
  <a class="brand" href="#" data-home><img src="assets/kelsey-logo.png" alt="Kelsey Media"><span></span><small>ARTWORK<br>SPECIFICATIONS</small></a>
- <button class="back-button" id="backButton" hidden>← Back to selection</button>
+ <button class="back-button" id="backButton" hidden onclick="document.getElementById('landing').hidden=false;document.getElementById('printPage').hidden=true;document.getElementById('digitalPage').hidden=true;this.hidden=true;document.body.classList.remove('spec-open');window.scrollTo(0,0);return false">← Back to selection</button>
 </header>
 <main>
  <section class="landing" id="landing">
   <div class="landing-heading"><div class="eyebrow">KELSEY MEDIA · PRODUCTION</div><h1>Artwork specifications</h1><p>Select the type of advertising artwork you need.</p></div>
   <div class="split">
-   <button class="choice print-choice" data-view="print" type="button" onclick="window.kelseyNavigate('print')">
+   <button class="choice print-choice" data-view="print" type="button" onclick="document.getElementById('landing').hidden=true;document.getElementById('printPage').hidden=false;document.getElementById('digitalPage').hidden=true;document.getElementById('backButton').hidden=false;document.body.classList.add('spec-open');window.scrollTo(0,0);return false">
     <span class="choice-kicker">01 / ADVERTISING</span>
     <span class="print-art" aria-hidden="true"><i></i><b></b><em></em></span>
     <span class="choice-title">PRINT SPECS</span><span class="choice-desc">Publication sizes, advert formats and print requirements.</span>
     <span class="choice-action">VIEW PRINT SPECIFICATIONS <b>↗</b></span>
    </button>
-   <button class="choice digital-choice" data-view="digital" type="button" onclick="window.kelseyNavigate('digital')">
+   <button class="choice digital-choice" data-view="digital" type="button" onclick="document.getElementById('landing').hidden=true;document.getElementById('printPage').hidden=true;document.getElementById('digitalPage').hidden=false;document.getElementById('backButton').hidden=false;document.body.classList.add('spec-open');window.scrollTo(0,0);return false">
     <span class="choice-kicker">02 / ADVERTISING</span>
     <span class="digital-art landing-devices" aria-hidden="true">
  <i class="landing-device landing-desktop"><span class="landing-screen"><span class="landing-screen-bar"></span><span class="landing-screen-content"></span></span><span class="landing-monitor-stand"></span></i>
