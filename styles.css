@@ -728,3 +728,9 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
  #digitalPage .device-shell.device-mobile{width:76px;height:145px}
  #digitalPage .device-stage-both{column-gap:8px;padding-left:6px;padding-right:6px}
 }
+
+/* Do not squash the proportions of the digital artwork examples */
+#digitalPage .placement-unit{max-height:none!important;height:auto;flex-shrink:0}
+#digitalPage .placement-billboard,#digitalPage .placement-leaderboard,#digitalPage .placement-double-mpu{max-height:none!important}
+#digitalPage .desktop-top-ads{max-height:none;overflow:visible}
+#digitalPage .mobile-top-ads,#digitalPage .mobile-in-content-ads{overflow:visible}
