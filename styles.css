@@ -378,3 +378,6 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
  .ks-extra-formats,.ks-source-table{padding-left:14px;padding-right:14px}
  .ks-print-notes{padding:15px}
 }
+
+.ks-bleed-boundary.trim-only{background:#fff;border:0}
+.ks-bleed-boundary.trim-only .ks-single-page{border:1.5px solid #294d32}
