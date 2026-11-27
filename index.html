@@ -198,7 +198,7 @@
   }
   if(!placements.length){
    const dim=spec.match(/Dimensions?\s*:\s*(\d+)\s*px?\s*[Ww×x]\s*(\d+)\s*px?/i)||
-             spec.match(/(\d+)\s*[×x]\s*(\d+)\s*px/i);
+             spec.match(/(\d+)\s*px?\s*[Ww×x]\s*(\d+)\s*px?/i)||spec.match(/(\d+)\s*[×x]\s*(\d+)\s*px/i);
    const w=dim?+dim[1]:0,h=dim?+dim[2]:0;
    if(w&&h){
     let devices=["desktop"];
