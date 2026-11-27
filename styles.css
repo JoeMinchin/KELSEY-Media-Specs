@@ -82,3 +82,9 @@ body:has(.landing:not([hidden])) .header .brand>span{background:#6d9275}
 /* Larger print page mockups so clients can judge advert placement */
 .print-preview-page{width:150px;max-height:220px}
 @media(max-width:650px){.print-preview-page{width:120px;max-height:175px}}
+
+/* V8 interaction hardening: make the full panels the top clickable layer */
+.split{z-index:2;pointer-events:auto}
+.choice{position:relative;z-index:3;pointer-events:auto;cursor:pointer;touch-action:manipulation}
+.choice>*{pointer-events:none}
+.landing-heading,.landing-foot{z-index:1}
