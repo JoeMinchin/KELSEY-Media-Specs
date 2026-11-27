@@ -6,7 +6,7 @@
 <title>Kelsey Media | Artwork Specifications</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=10">
+<link rel="stylesheet" href="./styles.css?v=11">
 </head>
 <body>
 <header class="header">
@@ -70,12 +70,23 @@
   }).join("")+'</div>';
  }
  function digitalPreview(item){
-  const m=item.spec.match(/Dimensions?\s*:\s*(\d+)\s*px?\s*[Ww×x]\s*(\d+)\s*px?/i)||item.spec.match(/(\d+)\s*[×x]\s*(\d+)\s*px/i);
-  if(!m)return '<div class="digital-preview-placeholder">CREATIVE PREVIEW</div>';
-  const w=+m[1],h=+m[2];
-  if(/mobile/i.test(item.name))return '<div class="digital-preview-area phone-stage"><div class="phone-frame"><div class="phone-screen"><div class="phone-banner" style="aspect-ratio:'+w+'/'+h+'"><span class="phone-placeholder">'+esc(item.name)+'</span></div></div></div><span class="preview-caption">MOBILE SCREEN PREVIEW · '+w+' × '+h+' PX</span></div>';
-  const bw=Math.min(250,Math.max(64,Math.sqrt(w/h)*75)),bh=bw/(w/h);
-  return '<div class="digital-preview-area"><div class="digital-preview" style="width:'+bw+'px;height:'+bh+'px"><span>'+esc(item.name)+'</span><i>ADVERT</i></div><span class="preview-caption">SCREEN PROPORTION PREVIEW · '+w+' × '+h+' PX</span></div>';
+  const m=item.spec.match(/Dimensions?\\s*:\\s*(\\d+)\\s*px?\\s*[Ww×x]\\s*(\\d+)\\s*px?/i)||item.spec.match(/(\\d+)\\s*[×x]\\s*(\\d+)\\s*px/i);
+  const w=m?+m[1]:0,h=m?+m[2]:0,ratio=w&&h?w/h:1.6;
+  const name=item.name.toLowerCase(),cat=item.category.toLowerCase();
+  let device="desktop";
+  if(/mobile|social/i.test(name)||cat==="social media")device="mobile";
+  else if(cat==="enewsletter")device="laptop";
+  else if(/mpu|mixed standard/i.test(name))device="tablet";
+  else if(/advertorial|video/i.test(name))device="laptop";
+  const label={mobile:"MOBILE",desktop:"DESKTOP",tablet:"TABLET",laptop:"LAPTOP"}[device];
+  const adStyle=w&&h?' style="aspect-ratio:'+w+'/'+h+';max-width:100%;max-height:100%;"':'';
+  const ad='<div class="device-ad device-ad-'+device+'"'+adStyle+'><span>'+esc(item.name)+'</span><b>ADVERT</b></div>';
+  let screen='';
+  if(device==="mobile")screen='<div class="device-shell device-mobile"><div class="device-screen mobile-screen"><div class="device-status"></div>'+ad+'</div></div>';
+  else if(device==="tablet")screen='<div class="device-shell device-tablet"><div class="device-screen tablet-screen"><div class="browser-bar"><i></i><i></i><i></i></div><div class="device-page">'+ad+'</div></div></div>';
+  else if(device==="laptop")screen='<div class="device-laptop-wrap"><div class="device-shell device-laptop"><div class="device-screen"><div class="browser-bar"><i></i><i></i><i></i></div><div class="device-page">'+ad+'</div></div></div><div class="laptop-base"></div></div>';
+  else screen='<div class="device-shell device-desktop"><div class="device-screen"><div class="browser-bar"><i></i><i></i><i></i></div><div class="device-page"><div class="mock-site-header"></div><div class="mock-site-content"><div class="mock-site-main"></div><div class="mock-site-side">'+ad+'</div></div></div></div><div class="desktop-stand"></div></div>';
+  return '<div class="digital-preview-area device-stage">'+screen+'<span class="preview-caption">'+label+' PREVIEW'+(w&&h?' · '+w+' × '+h+' PX':' · CREATIVE EXAMPLE')+'</span></div>';
  }
  function load(data){
   $("printCount").textContent=data.publications.length+" TITLES";
