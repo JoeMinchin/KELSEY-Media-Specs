@@ -38,7 +38,7 @@
 @media(max-width:650px){.landing{height:auto;min-height:100vh;padding-top:85px}.digital-detail{grid-template-columns:1fr}.print-preview-page{width:90px;max-height:125px}}
 
 /* V7: true edge-to-edge split landing */
-body:has(.landing:not([hidden])) .header{position:absolute;top:0;left:0;right:0;height:78px;background:transparent;border:0;z-index:5}
+body:has(.landing:not([hidden])) .header{position:absolute;top:0;left:0;right:0;height:78px;background:#fff;border:0;border-bottom:1px solid #e9eee9;z-index:5;box-shadow:0 2px 12px #17251b0a}
 body:has(.landing:not([hidden])) .header .brand small{color:#435a49}
 body:has(.landing:not([hidden])) .header .brand>span{background:#6d9275}
 .landing{height:100svh;min-height:620px;padding:0;position:relative;display:flex;flex-direction:column;overflow:hidden;background:#f7faf7}
@@ -88,3 +88,6 @@ body:has(.landing:not([hidden])) .header .brand>span{background:#6d9275}
 .choice{position:relative;z-index:3;pointer-events:auto;cursor:pointer;touch-action:manipulation}
 .choice>*{pointer-events:none}
 .landing-heading,.landing-foot{z-index:1}
+
+/* V9: keep the Kelsey logo on a solid white header above the split panels */
+body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom:1px solid #e9eee9!important;}
