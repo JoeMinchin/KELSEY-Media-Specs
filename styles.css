@@ -656,3 +656,24 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
 @media(max-width:650px){
   #digitalPage{min-height:calc(100vh - 76px);padding-left:14px;padding-right:14px;padding-bottom:48px}
 }
+
+
+/* Print dimensions column: dark-green contrast for clear size readings */
+#printPage .ks-dim-table thead th:nth-child(2){
+  background:#244b2d;
+  color:#fff;
+}
+#printPage .ks-dim-table tbody td:nth-child(2){
+  background:#315f3b;
+  color:#fff;
+  font-weight:700;
+}
+#printPage .ks-dim-table tbody tr:nth-child(even) td:nth-child(2){
+  background:#315f3b;
+  color:#fff;
+}
+#printPage .ks-dim-table tbody tr:hover td:nth-child(2),
+#printPage .ks-dim-table tbody tr.is-highlighted td:nth-child(2){
+  background:#1f4228;
+  color:#fff;
+}
