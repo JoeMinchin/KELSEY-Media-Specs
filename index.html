@@ -6,7 +6,7 @@
 <title>Kelsey Media | Artwork Specifications</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=16">
+<link rel="stylesheet" href="./styles.css?v=17">
 </head>
 <body>
 <header class="header">
@@ -78,32 +78,36 @@
   if(t){const open=t.getAttribute("aria-expanded")==="true";t.setAttribute("aria-expanded",String(!open));const panel=$(t.getAttribute("aria-controls"));if(panel)panel.hidden=open;}
  });
  function printCards(specs,trim){
-  const [tw,th]=trim.split("x").map(Number);
   const mm=value=>{
    const m=String(value||"").match(/([\\d.]+)\\s*[×x]\\s*([\\d.]+)/i);
    return m?{w:Number(m[1]),h:Number(m[2])}:null;
   };
-  return '<div class="format-grid">'+Object.entries(specs).map(([name,vals])=>{
+  const [tw,th]=trim.split(/\\s*x\\s*/i).map(Number);
+  return '<div class="print-format-list">'+Object.entries(specs).map(([name,vals])=>{
    const get=key=>vals.find(v=>v[0].toLowerCase()===key.toLowerCase())?.[1]||"";
-   const isFull=/full page/i.test(name),isSpread=/double page|spread/i.test(name);
-   const trimSize=mm(get("Trim"))||{w:tw,h:th};
-   const bleed=mm(get("Bleed"))||trimSize;
-   const type=mm(get("Type")||get("Type area"));
-   const adSize=isFull?trimSize:(mm(get("Size"))||trimSize);
-   const pageW=isSpread?550:tw,pageH=th;
-   const bleedW=isSpread?pageW:bleed.w,bleedH=bleed.h;
-   const trimLeft=(bleedW-pageW)/2/bleedW*100,trimTop=(bleedH-pageH)/2/bleedH*100;
-   const trimWidth=pageW/bleedW*100,trimHeight=pageH/bleedH*100;
-   const adW=Math.min(100,adSize.w/pageW*100),adH=Math.min(100,adSize.h/pageH*100);
-   const adLeft=isFull?trimLeft:trimLeft;
-   const adBottom=isFull?100-trimTop-trimHeight:trimTop+trimHeight-adH;
-   const fullBlock=isFull?'<div class="bleed-ad-block"></div>':'';
-   const safe=type?'<div class="clean-safe-area" style="width:'+Math.min(100,type.w/pageW*100)+'%;height:'+Math.min(100,type.h/pageH*100)+'%"></div>':"";
-   const crop='<span class="crop-marks" aria-hidden="true"></span>';
-   const trimBox='<div class="trim-page" style="left:'+trimLeft+'%;top:'+trimTop+'%;width:'+trimWidth+'%;height:'+trimHeight+'%">'+(isFull?'':'<div class="clean-ad-block" style="left:0;bottom:0;width:'+adW+'%;height:'+adH+'%"></div>')+safe+(isSpread?'<div class="spread-seam"></div>':"")+'</div>';
-   const canvas='<div class="bleed-canvas '+(isSpread?'spread':'')+'" style="aspect-ratio:'+bleedW+'/'+bleedH+'">'+(isFull?fullBlock:'')+trimBox+crop+'</div>';
-   const details=vals.map(v=>'<span><b>'+esc(v[0])+':</b> '+esc(v[1])+'</span>').join("");
-   return '<div class="format-card clean-format-card"><div class="print-preview-wrap clean-preview-wrap">'+canvas+'<span class="preview-caption">BLEED · TRIM · ADVERT POSITION</span></div><div class="format-info"><h4>'+esc(name)+'</h4><p>'+esc(get("Size")||get("Trim")||"")+'</p><div class="format-details">'+details+'</div><small class="client-note">Outer edge shows bleed; crop marks show trim. Green area shows advert placement. Measurements are authoritative.</small></div></div>';
+   const isSpread=/double page|spread/i.test(name);
+   const suppliedTrim=mm(get("Trim"));
+   const suppliedBleed=mm(get("Bleed"));
+   const suppliedType=mm(get("Type")||get("Type area"));
+   const suppliedSize=mm(get("Size"));
+   const pageW=isSpread?(suppliedSize?.w||550):tw;
+   const pageH=isSpread?(suppliedSize?.h||th):th;
+   const trimSize=suppliedTrim||{w:pageW,h:pageH};
+   const bleed=suppliedBleed;
+   const outerW=bleed?.w||trimSize.w,outerH=bleed?.h||trimSize.h;
+   const trimLeft=(outerW-trimSize.w)/2/outerW*100;
+   const trimTop=(outerH-trimSize.h)/2/outerH*100;
+   const trimWidth=trimSize.w/outerW*100,trimHeight=trimSize.h/outerH*100;
+   const adSize=suppliedSize||trimSize;
+   const adW=Math.min(100,adSize.w/trimSize.w*100);
+   const adH=Math.min(100,adSize.h/trimSize.h*100);
+   const isFull=/full page/i.test(name);
+   const adLeft=(100-adW)/2,adTop=(100-adH)/2;
+   const safe=suppliedType?'<div class="print-safe-area" style="width:'+Math.min(100,suppliedType.w/trimSize.w*100)+'%;height:'+Math.min(100,suppliedType.h/trimSize.h*100)+'%"></div>':"";
+   const marks=bleed?'<i class="crop crop-tl"></i><i class="crop crop-tr"></i><i class="crop crop-bl"></i><i class="crop crop-br"></i>':"";
+   const diagram='<div class="print-diagram"><div class="print-bleed '+(bleed?'has-bleed':'no-bleed')+'" style="aspect-ratio:'+outerW+'/'+outerH+'"><div class="print-trim" style="left:'+trimLeft+'%;top:'+trimTop+'%;width:'+trimWidth+'%;height:'+trimHeight+'%"><div class="print-ad-area '+(isFull?'full-ad':'')+'" style="left:'+adLeft+'%;top:'+adTop+'%;width:'+adW+'%;height:'+adH+'%"></div>'+safe+(isSpread?'<span class="print-spread-seam"></span>':"")+'</div>'+marks+'</div><div class="print-legend"><span><i class="legend-bleed"></i> '+(bleed?'Bleed edge':'Page edge')+'</span><span><i class="legend-trim"></i> Trim</span><span><i class="legend-ad"></i> Advert area</span>'+(suppliedType?'<span><i class="legend-safe"></i> Type-safe area</span>':"")+'</div></div>';
+   const details=vals.map(v=>'<div class="print-dimension"><span>'+esc(v[0])+'</span><strong>'+esc(v[1])+'</strong></div>').join("");
+   return '<article class="print-format-row">'+diagram+'<div class="print-format-copy"><div class="print-format-heading"><h3>'+esc(name)+'</h3><strong>'+esc(get("Size")||get("Trim")||"")+'</strong></div><div class="print-dimensions">'+details+'</div><p class="print-explainer">The diagram shows the advert area in proportion to the trimmed page. Use the dimensions shown here when preparing artwork.'+(bleed?' The outer line shows the supplied bleed size; crop marks indicate the trim boundary.':"")+(suppliedType?' The dashed inner line marks the supplied type-safe area.':"")+'</p></div></article>';
   }).join("")+'</div>';
  }
  function digitalPreview(item){
