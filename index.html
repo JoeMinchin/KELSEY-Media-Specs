@@ -252,7 +252,7 @@
    const skinAds=skins.map(unit).join("");
    const content=contentLabel?'<div class="mock-content-label">'+esc(contentLabel)+'</div>':'';
    if(isMobile){
-    return '<div class="device-preview device-preview-mobile"><div class="device-shell device-mobile"><div class="device-screen mobile-screen"><div class="device-status"></div><div class="mobile-page"><div class="mobile-site-header"></div><div class="mobile-top-ads">'+topAds+'</div><div class="mobile-site-content"></div><div class="mobile-in-content-ads">'+contentAds+'+sideAds+'</div>'+content+'</div></div></div><span class="device-label">MOBILE</span></div>';
+    return '<div class="device-preview device-preview-mobile"><div class="device-shell device-mobile"><div class="device-screen mobile-screen"><div class="device-status"></div><div class="mobile-page"><div class="mobile-site-header"></div><div class="mobile-top-ads">'+topAds+'</div><div class="mobile-site-content"></div><div class="mobile-in-content-ads">'+contentAds+sideAds+'</div>'+content+'</div></div></div><span class="device-label">MOBILE</span></div>';
    }
    return '<div class="device-preview device-preview-desktop"><div class="device-shell device-desktop"><div class="device-screen"><div class="browser-bar"><i></i><i></i><i></i></div><div class="device-page"><div class="mock-site-header"></div><div class="desktop-top-ads">'+topAds+'</div><div class="mock-site-content"><div class="mock-site-main">'+content+contentAds+'</div><div class="mock-site-side">'+sideAds+'</div></div><div class="desktop-skins">'+skinAds+'</div></div></div><div class="desktop-stand"></div></div><span class="device-label">DESKTOP</span></div>';
   }
