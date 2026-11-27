@@ -677,3 +677,54 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
   background:#1f4228;
   color:#fff;
 }
+
+
+/* Accurate, readable digital placement diagrams */
+#digitalPage .digital-detail{grid-template-columns:minmax(300px,44%) minmax(0,1fr);gap:24px}
+#digitalPage .device-stage{min-height:275px;padding:18px 12px 14px;display:flex;align-items:center;justify-content:center;gap:12px}
+#digitalPage .device-preview{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+#digitalPage .device-preview-desktop{width:min(100%,310px);flex:1 1 230px}
+#digitalPage .device-preview-mobile{width:100px;flex:0 0 100px}
+#digitalPage .device-shell.device-desktop{width:100%;height:166px;border-width:5px;padding:5px;border-radius:7px 7px 3px 3px}
+#digitalPage .device-shell.device-mobile{width:88px;height:166px;border-width:4px;padding:4px;border-radius:17px}
+#digitalPage .device-page{height:calc(100% - 13px);padding:5px;position:relative}
+#digitalPage .mock-site-header{height:8px;background:#263a2c;margin-bottom:4px}
+#digitalPage .desktop-top-ads{display:flex;flex-direction:column;align-items:center;gap:3px;max-height:45px;overflow:hidden}
+#digitalPage .mock-site-content{display:grid;grid-template-columns:1fr 31%;gap:5px;height:calc(100% - 13px);padding-top:4px}
+#digitalPage .mock-site-main{min-width:0;background:repeating-linear-gradient(to bottom,#e7eee8 0 8px,#fff 8px 12px);position:relative;overflow:hidden}
+#digitalPage .mock-site-side{min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px;overflow:hidden}
+#digitalPage .placement-unit{width:var(--placement-width);max-width:100%;aspect-ratio:var(--placement-ratio);min-height:8px;max-height:70px;flex:0 0 auto;background:#a5d8b0;border:1px solid #477e52;color:#183c22;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:2px;overflow:hidden;text-align:center}
+#digitalPage .placement-unit .placement-name{font:800 6px Manrope;line-height:1.1;text-transform:uppercase;letter-spacing:.2px}
+#digitalPage .placement-unit b{font:700 6px "DM Sans";line-height:1.1}
+#digitalPage .placement-billboard{max-height:40px}
+#digitalPage .placement-leaderboard{max-height:22px}
+#digitalPage .placement-double-mpu{max-height:75px}
+#digitalPage .placement-page-skin{max-height:100%;width:10px;min-height:80px;aspect-ratio:auto;writing-mode:vertical-rl}
+#digitalPage .desktop-skins{position:absolute;left:0;right:0;top:0;height:100%;display:flex;justify-content:space-between;pointer-events:none;overflow:hidden}
+#digitalPage .desktop-skins .placement-unit{height:100%;width:9px;max-height:none;border-width:1px;padding:1px}
+#digitalPage .desktop-skins .placement-unit .placement-name{font-size:5px}
+#digitalPage .desktop-skins .placement-unit b{display:none}
+#digitalPage .device-status{z-index:2}
+#digitalPage .mobile-page{height:100%;padding:12px 4px 4px;background:#fff;overflow:hidden}
+#digitalPage .mobile-site-header{height:8px;background:#263a2c;margin-bottom:5px}
+#digitalPage .mobile-top-ads,#digitalPage .mobile-in-content-ads{display:flex;flex-direction:column;align-items:center;gap:4px}
+#digitalPage .mobile-site-content{height:35px;margin:5px 0;background:repeating-linear-gradient(to bottom,#e7eee8 0 6px,#fff 6px 9px)}
+#digitalPage .mobile-in-content-ads .placement-unit{max-height:52px}
+#digitalPage .device-label{font:800 8px Manrope;letter-spacing:1px;color:#405448}
+#digitalPage .preview-caption{flex-basis:100%;width:100%;font-size:8px;letter-spacing:.8px;text-align:center;color:#405448}
+#digitalPage .device-stage-both{flex-direction:row;flex-wrap:wrap;align-items:center;column-gap:12px}
+#digitalPage .device-stage-note{min-height:160px}
+#digitalPage .preview-guidance{max-width:340px;padding:18px;background:#fff;border-left:4px solid #a5d8b0;color:#263a2c;display:flex;flex-direction:column;gap:7px}
+#digitalPage .preview-guidance strong{font:800 12px Manrope}
+#digitalPage .preview-guidance span{font-size:11px;line-height:1.6}
+#digitalPage .mock-content-label{font-size:6px;color:#64746a;padding:3px;text-align:center}
+@media(max-width:760px){
+ #digitalPage .digital-detail{grid-template-columns:1fr;gap:14px}
+ #digitalPage .device-stage{min-height:245px}
+ #digitalPage .device-preview-desktop{max-width:290px}
+}
+@media(max-width:420px){
+ #digitalPage .device-preview-mobile{width:82px;flex-basis:82px}
+ #digitalPage .device-shell.device-mobile{width:76px;height:145px}
+ #digitalPage .device-stage-both{column-gap:8px;padding-left:6px;padding-right:6px}
+}
