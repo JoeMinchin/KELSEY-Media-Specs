@@ -438,3 +438,13 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
  .ks-mini-spread{width:105px}
  .ks-format-card strong{font-size:10px}
 }
+
+/* Keep each advert example visibly inset from page edges, as in supplied magazine proof */
+.ks-mini-bleed{padding:4px;background:#e6f4e8;border:1px dashed #69a878;box-sizing:content-box;display:flex;align-items:center;justify-content:center}
+.ks-mini-bleed-spread{padding:5px;background:#e6f4e8;border:1px dashed #69a878}
+.ks-mini-bleed-spread .ks-mini-spread{width:116px}
+.ks-mini-page{overflow:visible}
+.ks-mini-ad{max-width:calc(100% - 1px);max-height:calc(100% - 1px)}
+.ks-format-card:hover,.ks-format-card.is-active{background:#e5f4e8;border-color:#80bd8b}
+.ks-dim-table tbody tr.is-highlighted{background:#dff1e2!important;box-shadow:inset 4px 0 #65b879}
+.ks-dim-table tbody tr.is-highlighted th,.ks-dim-table tbody tr.is-highlighted td{color:#244b2e;font-weight:700}
