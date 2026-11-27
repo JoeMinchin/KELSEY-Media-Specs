@@ -6,7 +6,10 @@ function init(){
  renderDigital();
  $("printSearch").addEventListener("input",e=>renderPrint(DATA.publications.filter(p=>p.name.toLowerCase().includes(e.target.value.trim().toLowerCase()))));
  $("skinNote").textContent="Page skins are only available for: "+DATA.pageSkinTitles.join(", ")+".";
- document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
+ document.addEventListener("click",e=>{
+  const choice=e.target.closest("button.choice[data-view]");
+  if(choice){e.preventDefault();e.stopPropagation();showView(choice.dataset.view);}
+ });
  $("backButton").addEventListener("click",()=>showView("home"));
  document.querySelector("[data-home]").addEventListener("click",e=>{e.preventDefault();showView("home");});
  showView("home");
