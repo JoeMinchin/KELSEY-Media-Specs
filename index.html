@@ -198,7 +198,7 @@
   }).join("");
   $("skinNote").textContent="Page skins are only available for: "+data.pageSkinTitles.join(", ")+".";
  }
- fetch("./data.json?v=10").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(load).catch(err=>{
+ fetch("./data.json?v=24").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(load).catch(err=>{
   console.error(err);$("printList").textContent="Specifications could not be loaded ("+err.message+"). Please contact Kelsey Media Production.";
   $("digitalList").textContent="Digital specifications could not be loaded.";
  });
