@@ -6,7 +6,7 @@
 <title>Kelsey Media | Artwork Specifications</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=36">
+<link rel="stylesheet" href="./styles.css?v=37">
 </head>
 <body>
 <header class="header">
@@ -206,8 +206,8 @@
    add(label,w,h,deviceMap[label]||["desktop"]);
   }
   if(!placements.length){
-   const dim=spec.match(/Dimensions?\s*:\s*(\d+)\s*px?\s*[Ww×x]\s*(\d+)\s*px?/i)||
-             spec.match(/(\d+)\s*px?\s*[Ww×x]\s*(\d+)\s*px?/i)||spec.match(/(\d+)\s*[×x]\s*(\d+)\s*px/i);
+   const dim=spec.match(/Dimensions?\s*:\s*(\d+)\s*px?\s*(?:W\s*)?[×x]\s*(\d+)\s*px?/i)||
+             spec.match(/(\d+)\s*px?\s*(?:W\s*)?[×x]\s*(\d+)\s*px?/i)||spec.match(/(\d+)\s*[×x]\s*(\d+)\s*px/i);
    const w=dim?+dim[1]:0,h=dim?+dim[2]:0;
    if(w&&h){
     let devices=["desktop"];
