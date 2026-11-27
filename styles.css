@@ -411,3 +411,30 @@ body:has(.landing:not([hidden])) .header{background:#fff!important;border-bottom
  .ks-dps-group .ks-format-card-grid{grid-template-columns:1fr}
  .ks-dim-table{min-width:650px}
 }
+
+/* Miniature full-page placement examples inside each advert-format card */
+.ks-format-card{min-height:225px;align-items:center;justify-content:flex-start;text-align:center;padding:14px 12px 13px;gap:7px}
+.ks-card-preview{height:112px;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;position:relative}
+.ks-mini-page,.ks-mini-spread{position:relative;width:64px;max-height:100px;background:#fff;border:1px solid #31553a;box-sizing:border-box;overflow:hidden;flex:none}
+.ks-mini-spread{width:116px}
+.ks-mini-ad{position:absolute;left:var(--ad-x);top:var(--ad-y);width:var(--ad-w);height:var(--ad-h);box-sizing:border-box;background:#a5d8b0;border:1px solid #6aaa79;transition:background .15s,box-shadow .15s}
+.ks-mini-ad.is-full{background:#a5d8b0}
+.ks-mini-gutter{position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed #31553a;z-index:2}
+.ks-mini-bleed{position:relative;padding:4px;background:#e6f4e8;border:1px dashed #69a878;box-sizing:content-box;display:flex;align-items:center;justify-content:center}
+.ks-mini-bleed .ks-mini-page{width:64px}
+.ks-mini-caption{font-size:7px;letter-spacing:.8px;color:#78907b;font-weight:800}
+.ks-format-card strong{font-size:12px;line-height:1.35;min-height:30px;display:flex;align-items:center;justify-content:center}
+.ks-format-card.is-active .ks-mini-ad,.ks-format-card:hover .ks-mini-ad{background:#5eaf70;border-color:#28733b;box-shadow:0 0 0 2px #a5d8b066}
+.ks-format-card.is-active .ks-mini-page,.ks-format-card:hover .ks-mini-page{border-color:#28733b}
+.ks-format-card.is-active .ks-mini-bleed,.ks-format-card:hover .ks-mini-bleed{background:#d8efdd;border-color:#28733b}
+.ks-format-card.is-active .ks-format-code{background:#65b879;color:#163d20}
+.ks-dps-group .ks-format-card-grid{grid-template-columns:minmax(210px,280px)}
+.ks-dps-group .ks-format-card{min-height:225px}
+@media(max-width:680px){
+ .ks-format-card{min-height:205px;padding:10px 7px}
+ .ks-card-preview{height:100px}
+ .ks-mini-page{width:56px;max-height:90px}
+ .ks-mini-bleed .ks-mini-page{width:56px}
+ .ks-mini-spread{width:105px}
+ .ks-format-card strong{font-size:10px}
+}
