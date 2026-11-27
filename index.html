@@ -91,9 +91,13 @@
   root.querySelectorAll(".ks-dim-table tbody tr").forEach(row=>row.classList.toggle("is-highlighted",row.dataset.formatRow===code));
  }
  function printCards(specs,trim){
+  const tm=String(trim).match(/([\d.]+)\s*x\s*([\d.]+)/i);
+  const page={w:tm?+tm[1]:200,h:tm?+tm[2]:270};
   const entries=Object.entries(specs).map(([name,vals])=>{
    const get=key=>vals.find(v=>v[0].toLowerCase()===key.toLowerCase())?.[1]||"";
-   return {name,vals,get};
+   const sizeText=get("Size")||get("Trim")||"";
+   const m=sizeText.match(/([\d.]+)\s*[×x]\s*([\d.]+)/i);
+   return {name,vals,get,size:m?{w:+m[1],h:+m[2]}:null};
   });
   const codeFor=name=>{
    const n=name.toLowerCase();
@@ -103,22 +107,47 @@
    if(/half page vertical/.test(n))return "HPV";
    if(/quarter page horizontal/.test(n))return "QPH";
    if(/quarter page (portrait|vertical)/.test(n))return "QPV";
-   if(/^eighth page$/.test(n))return "EP";
-   return "";
+   if(/^eighth page$|eighth page horizontal/.test(n))return "EP";
+   if(/eighth page vertical/.test(n))return "EPV";
+   if(/half page island/.test(n))return "HPI";
+   if(/quarter page island/.test(n))return "QPI";
+   if(/sixteenth/.test(n))return "16P";
+   if(/thirty-second/.test(n))return "32P";
+   if(/sixth page/.test(n))return "6P";
+   if(/twelfth/.test(n))return "12P";
+   return name;
   };
-  const single=entries.filter(e=>codeFor(e.name)!=="DPS");
-  const dps=entries.filter(e=>codeFor(e.name)==="DPS");
+  const makeThumb=e=>{
+   const code=codeFor(e.name),isDps=code==="DPS";
+   const base=isDps?{w:550,h:page.h}:page;
+   const size=e.size||base;
+   const w=Math.min(100,size.w/base.w*100),h=Math.min(100,size.h/base.h*100);
+   let x=(100-w)/2,y=(100-h)/2;
+   if(code==="FP"||isDps){x=0;y=0}
+   else if(code==="HPH"){x=0;y=100-h}
+   else if(code==="HPV"){x=0;y=0}
+   else if(code==="QPH"){x=0;y=100-h}
+   else if(code==="QPV"){x=100-w;y=0}
+   else if(code==="EP"||code==="EPV"){x=100-w;y=100-h}
+   const outer=e.get("Bleed"),trimSize=e.get("Trim");
+   const bleed=!!outer;
+   const pageClass=isDps?"ks-mini-spread":"ks-mini-page";
+   const pageHtml='<div class="'+pageClass+'" style="aspect-ratio:'+base.w+'/'+base.h+';--ad-x:'+x+'%;--ad-y:'+y+'%;--ad-w:'+w+'%;--ad-h:'+h+'%"><span class="ks-mini-ad '+(code==="FP"||isDps?"is-full":"")+'"></span>'+(isDps?'<i class="ks-mini-gutter"></i>':"")+'</div>';
+   return '<div class="ks-card-preview '+(bleed?'has-bleed':'')+'">'+(bleed?'<div class="ks-mini-bleed" style="aspect-ratio:'+page.w+'/'+page.h+'">'+pageHtml+'</div>':pageHtml)+'<span class="ks-mini-caption">'+(isDps?"TWO-PAGE SPREAD":"PAGE PLACEMENT")+'</span></div>';
+  };
   const cards=list=>list.map(e=>{
-   const code=codeFor(e.name)||e.name;
-   return '<button type="button" class="ks-format-card" data-format="'+esc(code)+'"><span class="ks-format-code">'+esc(code)+'</span><strong>'+esc(e.name)+'</strong><span class="ks-card-hint">Hover to highlight dimensions</span></button>';
+   const code=codeFor(e.name);
+   return '<button type="button" class="ks-format-card" data-format="'+esc(code)+'">'+makeThumb(e)+'<span class="ks-format-code">'+esc(code)+'</span><strong>'+esc(e.name)+'</strong><span class="ks-card-hint">Hover to highlight dimensions</span></button>';
   }).join("");
+  const dps=entries.filter(e=>codeFor(e.name)==="DPS");
+  const single=entries.filter(e=>codeFor(e.name)!=="DPS");
   const tableRows=entries.map(e=>{
-   const code=codeFor(e.name)||e.name;
-   return '<tr data-format-row="'+esc(code)+'"><th><span class="ks-table-code">'+esc(code)+'</span>'+esc(e.name)+'</th><td>'+esc(e.get("Size")||"—")+'</td><td>'+esc(e.get("Type")||"—")+'</td><td>'+esc(e.get("Trim")||"—")+'</td><td>'+esc(e.get("Bleed")||"—")+'</td></tr>';
+   const code=codeFor(e.name);
+   return '<tr data-format-row="'+esc(code)+'"><th><span class="ks-table-code">'+esc(code)+'</span>'+esc(e.name)+'</th><td>'+esc(e.get("Size")||e.get("Trim")||"—")+'</td><td>'+esc(e.get("Type")||"—")+'</td><td>'+esc(e.get("Trim")||"—")+'</td><td>'+esc(e.get("Bleed")||"—")+'</td></tr>';
   }).join("");
-  const dpsSection=dps.length?'<section class="ks-format-group ks-dps-group"><div class="ks-group-heading"><div><span class="ks-kicker">DOUBLE-PAGE SPREAD</span><h3>Two-page advert</h3><p>Separate format for artwork spanning both pages.</p></div></div><div class="ks-format-card-grid">'+cards(dps)+'</div></section>':"";
-  const singleSection='<section class="ks-format-group"><div class="ks-group-heading"><div><span class="ks-kicker">SINGLE-PAGE FORMATS</span><h3>Choose your advert size</h3><p>Hover over a format box to highlight its matching row in the dimensions table below. Tap to select on mobile.</p></div><span class="ks-page-size">'+esc(trim)+' mm trim</span></div><div class="ks-format-card-grid">'+cards(single)+'</div></section>';
-  const table='<section class="ks-source-table"><div class="ks-group-heading"><div><span class="ks-kicker">ARTWORK MEASUREMENTS</span><h3>Dimensions and requirements</h3></div></div><div class="ks-table-wrap"><table class="ks-dim-table"><thead><tr><th>Advert format</th><th>Advert size</th><th>Type</th><th>Trim</th><th>Bleed</th></tr></thead><tbody>'+tableRows+'</tbody></table></div><p class="ks-table-note">A dash means that a separate measurement is not provided in the source specification. Do not assume bleed where it is not listed.</p></section>';
+  const dpsSection=dps.length?'<section class="ks-format-group ks-dps-group"><div class="ks-group-heading"><div><span class="ks-kicker">DOUBLE-PAGE SPREAD</span><h3>Two-page advert example</h3><p>Shown across a full two-page spread, with the centre gutter.</p></div></div><div class="ks-format-card-grid">'+cards(dps)+'</div></section>':"";
+  const singleSection='<section class="ks-format-group"><div class="ks-group-heading"><div><span class="ks-kicker">SINGLE-PAGE FORMATS</span><h3>Advert placement examples</h3><p>Each example shows the advert positioned within a complete page. Hover over a box to highlight its dimensions below.</p></div><span class="ks-page-size">'+esc(trim)+' mm trim</span></div><div class="ks-format-card-grid">'+cards(single)+'</div></section>';
+  const table='<section class="ks-source-table"><div class="ks-group-heading"><div><span class="ks-kicker">ARTWORK MEASUREMENTS</span><h3>Dimensions and requirements</h3></div></div><div class="ks-table-wrap"><table class="ks-dim-table"><thead><tr><th>Advert format</th><th>Advert size</th><th>Type</th><th>Trim</th><th>Bleed</th></tr></thead><tbody>'+tableRows+'</tbody></table></div><p class="ks-table-note">A dash means that a separate measurement is not provided in the source specification. Bleed is shown only for formats where it is specified.</p></section>';
   return '<section class="ks-print-spec">'+singleSection+dpsSection+table+'</section>';
  }
  function digitalPreview(item){
