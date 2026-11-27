@@ -1,23 +1,29 @@
 let DATA;
 const $=id=>document.getElementById(id);
-fetch("./data.json?v=7").then(r=>{if(!r.ok)throw Error("data");return r.json();}).then(data=>{DATA=data;init();}).catch(()=>{$("printList").textContent="We couldn't load the specifications. Please refresh the page or contact Kelsey Media Production.";});
+function showView(view){
+ $("landing").hidden=view!=="home";$("printPage").hidden=view!=="print";$("digitalPage").hidden=view!=="digital";$("backButton").hidden=view==="home";
+ document.body.classList.toggle("spec-open",view!=="home");window.scrollTo({top:0,behavior:"instant"});
+ if(view==="print")$("printSearch").focus({preventScroll:true});
+}
+// Navigation is registered immediately, independently of the specifications data.
+// This keeps the two landing choices working even if data.json fails to load.
+document.addEventListener("click",e=>{
+ const choice=e.target.closest("button.choice[data-view]");
+ if(choice){e.preventDefault();showView(choice.dataset.view);return;}
+ if(e.target.closest("#backButton")){e.preventDefault();showView("home");return;}
+ if(e.target.closest("[data-home]")){e.preventDefault();showView("home");}
+});
+showView("home");
+fetch("./data.json?v=9").then(r=>{if(!r.ok)throw Error("data");return r.json();}).then(data=>{DATA=data;init();}).catch(err=>{
+ console.error("Kelsey Media specifications data could not be loaded:",err);
+ $("printList").textContent="We couldn't load the specifications. Please refresh the page or contact Kelsey Media Production.";
+ $("digitalList").textContent="Digital specifications could not be loaded. Please refresh the page or contact Kelsey Media Production.";
+});
 function init(){
  renderPrint(DATA.publications);
  renderDigital();
  $("printSearch").addEventListener("input",e=>renderPrint(DATA.publications.filter(p=>p.name.toLowerCase().includes(e.target.value.trim().toLowerCase()))));
  $("skinNote").textContent="Page skins are only available for: "+DATA.pageSkinTitles.join(", ")+".";
- document.addEventListener("click",e=>{
-  const choice=e.target.closest("button.choice[data-view]");
-  if(choice){e.preventDefault();e.stopPropagation();showView(choice.dataset.view);}
- });
- $("backButton").addEventListener("click",()=>showView("home"));
- document.querySelector("[data-home]").addEventListener("click",e=>{e.preventDefault();showView("home");});
- showView("home");
-}
-function showView(view){
- $("landing").hidden=view!=="home";$("printPage").hidden=view!=="print";$("digitalPage").hidden=view!=="digital";$("backButton").hidden=view==="home";
- document.body.classList.toggle("spec-open",view!=="home");window.scrollTo({top:0,behavior:"instant"});
- if(view==="print")$("printSearch").focus({preventScroll:true});
 }
 function renderPrint(publications){
  $("printCount").textContent=publications.length+" TITLES";
