@@ -79,16 +79,17 @@
  });
  document.addEventListener("click",e=>{
   const card=e.target.closest(".ks-format-card");
-  if(card)highlightFormat(card.closest(".ks-print-spec"),card.dataset.format);
+  if(card)showFormatDetails(card.closest(".ks-print-spec"),card.dataset.format);
  });
- document.addEventListener("pointerover",e=>{
-  const card=e.target.closest(".ks-format-card");
-  if(card)highlightFormat(card.closest(".ks-print-spec"),card.dataset.format);
- });
- function highlightFormat(root,code){
+ function showFormatDetails(root,code){
   if(!root||!code)return;
   root.querySelectorAll(".ks-format-card").forEach(card=>card.classList.toggle("is-active",card.dataset.format===code));
-  root.querySelectorAll(".ks-dim-table tbody tr").forEach(row=>row.classList.toggle("is-highlighted",row.dataset.formatRow===code));
+  const row=[...root.querySelectorAll(".ks-dim-table tbody tr")].find(r=>r.dataset.formatRow===code);
+  const panel=root.querySelector(".ks-format-side-detail");
+  if(!panel||!row)return;
+  const cells=[...row.querySelectorAll("td")].map(td=>td.textContent.trim());
+  const headings=["Advert size","Type area","Trim","Bleed"];
+  panel.innerHTML='<span class="ks-side-kicker">'+esc(code)+' · FORMAT DETAILS</span><strong class="ks-side-title">'+esc(row.querySelector("th").textContent.replace(code,"").trim())+'</strong><div class="ks-side-measurements">'+headings.map((h,i)=>'<div><span>'+h+'</span><b>'+esc(cells[i]||"—")+'</b></div>').join("")+'</div><p class="ks-side-copy">'+(code==="DPS"?"Two-page spread. The centre line is the spine/gutter, not a bleed area. Confirm provisional DPS measurements with Production.":"Measurements shown are taken from the publication specification.")+'</p>';
  }
  function printCards(specs,trim){
   const tm=String(trim).match(/([\d.]+)\s*x\s*([\d.]+)/i);
@@ -154,14 +155,14 @@
   }).join("");
   const dps=chosen.filter(e=>codeFor(e.name)==="DPS");
   const single=chosen.filter(e=>codeFor(e.name)!=="DPS");
+  const allCards=chosen;
   const tableRows=chosen.map(e=>{
    const code=codeFor(e.name);
    return '<tr data-format-row="'+esc(code)+'"><th><span class="ks-table-code">'+esc(code)+'</span>'+esc(e.name)+'</th><td>'+esc(e.get("Size")||e.get("Trim")||"—")+'</td><td>'+esc(e.get("Type")||"—")+'</td><td>'+esc(e.get("Trim")||"—")+'</td><td>'+esc(e.get("Bleed")||"—")+'</td></tr>';
   }).join("");
-  const dpsSection=dps.length?'<section class="ks-format-group ks-dps-group"><div class="ks-group-heading"><div><span class="ks-kicker">DOUBLE-PAGE SPREAD</span><h3>Two-page advert example</h3><p>Shown across a full two-page spread, with the centre gutter.</p></div></div><div class="ks-format-card-grid">'+cards(dps)+'</div></section>':"";
-  const singleSection='<section class="ks-format-group"><div class="ks-group-heading"><div><span class="ks-kicker">SINGLE-PAGE FORMATS</span><h3>Advert placement examples</h3><p>Each example shows the advert positioned within a complete page. Hover over a box to highlight its dimensions below.</p></div><span class="ks-page-size">'+esc(trim)+' mm trim</span></div><div class="ks-format-card-grid">'+cards(single)+'</div></section>';
+  const singleSection='<section class="ks-format-group"><div class="ks-group-heading"><div><span class="ks-kicker">ADVERT FORMATS</span><h3>Choose an advert format</h3><p>Select any example to view its artwork dimensions alongside the diagram.</p></div><span class="ks-page-size">'+esc(trim)+' mm trim</span></div><div class="ks-format-layout"><div class="ks-format-card-grid">'+cards(allCards)+'</div><aside class="ks-format-side-detail" aria-live="polite"><span class="ks-side-kicker">FORMAT DETAILS</span><strong class="ks-side-title">Select an advert format</strong><p class="ks-side-copy">Choose one of the examples to see its dimensions and artwork requirements here.</p></aside></div></section>';
   const table='<section class="ks-source-table"><div class="ks-group-heading"><div><span class="ks-kicker">ARTWORK MEASUREMENTS</span><h3>Dimensions and requirements</h3></div></div><div class="ks-table-wrap"><table class="ks-dim-table"><thead><tr><th>Advert format</th><th>Advert size</th><th>Type</th><th>Trim</th><th>Bleed</th></tr></thead><tbody>'+tableRows+'</tbody></table></div><p class="ks-table-note">A dash means that a separate measurement is not provided in the source specification. Bleed is shown only for formats where it is specified.</p></section>';
-  return '<section class="ks-print-spec">'+singleSection+dpsSection+table+'</section>';
+  return '<section class="ks-print-spec">'+singleSection+table+'</section>';
  }
  function digitalPreview(item){
   const m=item.spec.match(/Dimensions?\s*:\s*(\d+)\s*px?\s*[Ww×x]\s*(\d+)\s*px?/i)||item.spec.match(/(\d+)\s*[×x]\s*(\d+)\s*px/i);
